@@ -1,45 +1,5 @@
-# PSO2NGS LCT — Live Chat Translator
-
-แปลข้อความ Chat ใน PSO2 New Genesis แบบ Real-time (EN ↔ JP ↔ TH)
-
----
-
-## สำหรับผู้ใช้ทั่วไป (ไม่ต้อง install อะไร)
-
-1. ไปที่ **[Releases](../../releases/latest)**
-2. โหลด `PSO2NGS_LCT_vX.X.X.zip`
-3. แตก ZIP → ดับเบิลคลิก **`PSO2NGS LCT.exe`**
-
----
-
-## สำหรับนักพัฒนา (Build เอง)
-
-### ความต้องการ
-- [Python 3.10+](https://www.python.org/downloads/)
-- [Node.js 18+](https://nodejs.org/)
-- Windows 10/11 x64
-
-### วิธี Build
-```
-ดับเบิลคลิก build.bat
-```
-ไฟล์ ZIP จะอยู่ที่ `release/`
-
-### Build แยกทีละขั้น
-```bat
-# 1. ติดตั้ง dependencies
-pip install flask flask-socketio pyinstaller
-npm install
-
-# 2. Build Python → EXE (ใช้ .spec)
-pyinstaller PSO2NGS_LCT_server.spec --distpath server_files
-
-# 3. Build Electron
-npm run dist
-```
-
----
-
+## Folder Structure
+## フォルダ構成
 ## โครงสร้างโฟลเดอร์
 
 ```
@@ -58,13 +18,20 @@ PSO2NGS_LCT/
 ```
 
 ---
+## English
 
-## หมายเหตุ
+### Notes
+- Clicking **X** on the window → The app will continue running in the **System Tray**  
+- Clicking **Quit** in the System Tray → Closes both the App and Server  
 
-- กด **X** ที่หน้าต่าง → App ยังทำงานอยู่ใน **System Tray**
-- กด **Quit** ใน System Tray → ปิด App และ Server พร้อมกัน
+## 日本語
 
----
+### 注意事項
+- ウィンドウの **X** を押しても、アプリは **System Tray** 上で動作し続けます  
+- System Tray の **Quit** を押すと、App と Server の両方が終了します  
 
-## License
-AGPL-3.0
+## ไทย
+
+### หมายเหตุ
+- กด **X** ที่หน้าต่าง → App ยังทำงานอยู่ใน **System Tray**  
+- กด **Quit** ใน System Tray → ปิด App และ Server พร้อมกัน  
