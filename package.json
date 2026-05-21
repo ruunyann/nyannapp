@@ -1,6 +1,6 @@
 {
   "name": "NYANNAPP",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "NYANN APP Project — PSO2 NGS Live Chat Text-to-Speech",
   "author": "BigCuteDonut",
   "main": "main.js",
@@ -11,13 +11,17 @@
   "build": {
     "appId": "com.nyannlctts",
     "productName": "NYANNAPP",
+    "artifactName": "NYANNAPP-Setup-${version}.${ext}",
     "publish": {
       "provider": "github",
       "owner": "ruunyann",
       "repo": "nyannlctts"
     },
     "win": {
-      "target": [{ "target": "nsis", "arch": ["x64"] }]
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "zip",  "arch": ["x64"] }
+      ]
     },
     "nsis": {
       "oneClick": true,
