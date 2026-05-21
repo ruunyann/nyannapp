@@ -1,7 +1,7 @@
 {
-  "name": "nyannlctts",
-  "version": "1.0.0",
-  "description": "PSO2NGS Live Chat Translator",
+  "name": "NYANNAPP",
+  "version": "0.0.18",
+  "description": "NYANN APP Project — PSO2 NGS Live Chat Text-to-Speech",
   "author": "BigCuteDonut",
   "main": "main.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "build": {
     "appId": "com.nyannlctts",
-    "productName": "nyannlctts",
+    "productName": "NYANNAPP",
     "publish": {
       "provider": "github",
       "owner": "ruunyann",
@@ -29,16 +29,16 @@
     },
     "extraResources": [
       {
-        "from": "server_files/PSO2NGS_LCT_server.exe",
-        "to": "app.asar.unpacked/server/PSO2NGS_LCT_server.exe"
+        "from": "server_files/NYANNSERVER.exe",
+        "to": "app.asar.unpacked/server/NYANNSERVER.exe"
       },
       {
-        "from": "app_files/PSO2NGS_LCT.html",
-        "to": "app.asar.unpacked/app/PSO2NGS_LCT.html"
+        "from": "app_files/NYANNAPP.html",
+        "to": "app.asar.unpacked/app/NYANNAPP.html"
       },
       {
-        "from": "server.ico",
-        "to": "app.asar.unpacked/app/server.ico"
+        "from": "icon.ico",
+        "to": "app.asar.unpacked/app/icon.ico"
       }
     ],
     "asar": true

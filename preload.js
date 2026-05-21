@@ -19,4 +19,15 @@ contextBridge.exposeInMainWorld('electronAPI', {
   onUpdateDownloaded: (cb) => ipcRenderer.on('update-downloaded', () => cb()),
   installUpdate:      ()   => ipcRenderer.invoke('install-update'),
   checkForUpdates:    ()   => ipcRenderer.invoke('check-for-updates'),
+
+  // Bookmarks persistence
+  bookmarksLoad: ()       => ipcRenderer.invoke('bookmarks-load'),
+  bookmarksSave: (data)   => ipcRenderer.invoke('bookmarks-save', data),
+
+  // Folder existence check
+  checkFolderExists: (folderPath) => ipcRenderer.invoke('check-folder-exists', folderPath),
+
+  // Custom App Icon
+  pickIconFile:    ()          => ipcRenderer.invoke('pick-icon-file'),
+  setCustomIcon:   (dataUrl)   => ipcRenderer.invoke('set-custom-icon', dataUrl),
 })
