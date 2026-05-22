@@ -1,6 +1,6 @@
 {
   "name": "NYANNAPP",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "NYANN APP Project — PSO2 NGS Live Chat Text-to-Speech",
   "author": "BigCuteDonut",
   "main": "main.js",
@@ -19,8 +19,7 @@
     },
     "win": {
       "target": [
-        { "target": "nsis", "arch": ["x64"] },
-        { "target": "zip",  "arch": ["x64"] }
+        { "target": "nsis", "arch": ["x64"] }
       ]
     },
     "nsis": {
@@ -33,10 +32,6 @@
     },
     "extraResources": [
       {
-        "from": "server_files/NYANNSERVER.exe",
-        "to": "app.asar.unpacked/server/NYANNSERVER.exe"
-      },
-      {
         "from": "app_files/NYANNAPP.html",
         "to": "app.asar.unpacked/app/NYANNAPP.html"
       },
@@ -45,13 +40,26 @@
         "to": "app.asar.unpacked/app/icon.ico"
       }
     ],
-    "asar": true
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/express/**",
+      "node_modules/socket.io/**",
+      "node_modules/socket.io-adapter/**",
+      "node_modules/socket.io-parser/**",
+      "node_modules/engine.io/**",
+      "node_modules/engine.io-parser/**",
+      "node_modules/accepts/**",
+      "node_modules/cors/**",
+      "node_modules/ws/**"
+    ]
   },
   "devDependencies": {
     "electron": "^28.3.3",
     "electron-builder": "^24.13.3"
   },
   "dependencies": {
-    "electron-updater": "^6.3.9"
+    "electron-updater": "^6.3.9",
+    "express": "^4.19.2",
+    "socket.io": "^4.7.4"
   }
 }

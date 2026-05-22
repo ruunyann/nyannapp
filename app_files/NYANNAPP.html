@@ -1807,42 +1807,6 @@ input[type=range]:not(#ccp-hue):not(.bg-range)::-moz-range-progress {
         #menu-heart-canvas { transition: transform .12s; }
         #btn-menu-pill:active #menu-heart-canvas { transform: scale(0.85); }
 
-#tts-speaking-btn {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 2px;
-      width: 28px; height: 28px;
-      background: transparent;
-      border: 1.5px solid rgba(0,255,163,0.35);
-      border-radius: 7px;
-      cursor: pointer;
-      padding: 0;
-      flex-shrink: 0;
-      transition: background .15s, border-color .15s;
-      -webkit-app-region: no-drag;
-    }
-    #tts-speaking-btn.visible { display: inline-flex; }
-    #tts-speaking-btn:hover { background: rgba(255,77,109,0.15); border-color: var(--red); }
-    #tts-speaking-btn:hover .tts-wave-bar { background: var(--red) !important; box-shadow: 0 0 4px var(--red) !important; }
-
-    .tts-wave-bar {
-      width: 3px;
-      border-radius: 2px;
-      background: var(--grn);
-      animation: tts-wave 0.9s ease-in-out infinite;
-      box-shadow: 0 0 4px var(--grn);
-    }
-    .tts-wave-bar:nth-child(1) { animation-delay: 0s;    height: 5px; }
-    .tts-wave-bar:nth-child(2) { animation-delay: 0.15s; height: 9px; }
-    .tts-wave-bar:nth-child(3) { animation-delay: 0.3s;  height: 13px; }
-    .tts-wave-bar:nth-child(4) { animation-delay: 0.15s; height: 9px; }
-    .tts-wave-bar:nth-child(5) { animation-delay: 0s;    height: 5px; }
-
-    @keyframes tts-wave {
-      0%, 100% { transform: scaleY(0.4); opacity: 0.6; }
-      50%       { transform: scaleY(1.0); opacity: 1.0; }
-    }
 
 ._dev-toast-btn {
         display:flex; align-items:center; gap:8px;
@@ -2687,25 +2651,7 @@ input[type=range]:not(#ccp-hue):not(.bg-range)::-moz-range-progress {
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="#00b4ff" viewBox="0 0 16 16"><path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/></svg>
               Test: Show Toast
             </button>
-            <button onclick="(function(){
-              const btn=document.getElementById('tts-speaking-btn');
-              if(!btn)return;
-              btn.classList.add('visible');
-              clearTimeout(window._devWaveTimer);
-              window._devWaveTimer=setTimeout(()=>btn.classList.remove('visible'),4000);
-              closeMenuOverlay();
-              typeof showToast==='function'&&showToast('🎵 Waveform test — หายใน 4 วิ');
-            })()"
-              style="display:flex;align-items:center;gap:8px;
-                     padding:7px 10px;border-radius:8px;border:1px solid #00ffa322;
-                     background:#00ffa308;color:rgba(255,255,255,0.7);
-                     font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;letter-spacing:.3px;
-                     cursor:pointer;transition:all .15s;text-align:left;width:100%;"
-              onmouseenter="this.style.background='#00ffa318';this.style.borderColor='#00ffa355';this.style.color='#00ffa3'"
-              onmouseleave="this.style.background='#00ffa308';this.style.borderColor='#00ffa322';this.style.color='rgba(255,255,255,0.7)'">
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="#00ffa3" viewBox="0 0 16 16"><path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13s1.12-2 2.5-2 2.5.896 2.5 2m9-2c0 1.105-1.12 2-2.5 2s-2.5-.896-2.5-2 1.12-2 2.5-2 2.5.896 2.5 2m-9 2V3l9-2v10z"/></svg>
-              Test: Show Waveform (4s)
-            </button>
+
 
           </div>
         </div>
@@ -2714,16 +2660,18 @@ input[type=range]:not(#ccp-hue):not(.bg-range)::-moz-range-progress {
     </div>
   <button class="tab-btn active" id="tabbtn-chat" onclick="popBtn(this);switchTab('chat',this)">LIVE CHAT</button>
 
-  <!-- TTS Speaking Indicator -->
-  <button id="tts-speaking-btn" title="กำลังพูด — คลิกเพื่อ Skip" onclick="ttsSkipCurrent()">
-    <span class="tts-wave-bar"></span>
-    <span class="tts-wave-bar"></span>
-    <span class="tts-wave-bar"></span>
-    <span class="tts-wave-bar"></span>
-    <span class="tts-wave-bar"></span>
-  </button>
-
   <div class="right-btns" style="position:relative;margin-left:auto;display:flex;align-items:center;gap:6px">
+    <!-- Open in Browser -->
+    <button
+      onclick="(function(){try{if(window.electronAPI?.openExternal){window.electronAPI.openExternal('http://localhost:5514');}else if(window.require){window.require('electron').shell.openExternal('http://localhost:5514');}else{window.open('http://localhost:5514','_blank');}}catch(e){window.open('http://localhost:5514','_blank');}})()"
+      data-tooltip="เปิดใน Browser (localhost:5514)"
+      style="-webkit-app-region:no-drag;display:flex;align-items:center;justify-content:center;width:28px;height:28px;border:none;border-radius:6px;background:transparent;color:rgba(255,255,255,0.38);cursor:pointer;padding:0;flex-shrink:0;transition:background .15s,color .15s;"
+      onmouseenter="this.style.background='rgba(0,180,255,0.12)';this.style.color='var(--blu)'"
+      onmouseleave="this.style.background='transparent';this.style.color='rgba(255,255,255,0.38)'">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+      </svg>
+    </button>
     <!-- BETA badge -->
     <div id="beta-wrap" style="position:relative;flex-shrink:0;">
       <span id="tb-name-text" style="font-family:'Press Start 2P',monospace;font-size:9px;background:linear-gradient(90deg,var(--blu),var(--acc,#a78bfa));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;padding:2px 4px;display:block;">BETA</span>
@@ -3132,21 +3080,8 @@ input[type=range]:not(#ccp-hue):not(.bg-range)::-moz-range-progress {
       <input type="checkbox" id="cfg-webspeech" style="display:none">
 
       <!-- Chip toggle row -->
-      <input type="checkbox" id="cfg-tts-waveform" style="display:none" checked>
       <input type="checkbox" id="cfg-tts-name" style="display:none">
       <div style="display:flex;gap:6px;flex-wrap:wrap;">
-
-        <!-- Chip: Waveform -->
-        <button id="disp-pill-ttswaveform"
-          onclick="toggleTtsWaveformPill()"
-          role="switch" aria-checked="true" tabindex="0"
-          aria-label="แสดง Waveform icon ใน titlebar"
-          class="tts-chip active">
-          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13s1.12-2 2.5-2 2.5.896 2.5 2m9-2c0 1.105-1.12 2-2.5 2s-2.5-.896-2.5-2 1.12-2 2.5-2 2.5.896 2.5 2m-9 2V3l9-2v10z"/></svg>
-          Waveform
-          <span class="tts-chip-dot" id="tts-waveform-badge-lbl"></span>
-        </button>
-
         <!-- Chip: TTS อ่านชื่อ -->
         <button id="disp-pill-ttsname"
           onclick="toggleDispPill('ttsname')"
@@ -3158,6 +3093,23 @@ input[type=range]:not(#ccp-hue):not(.bg-range)::-moz-range-progress {
           <span class="tts-chip-dot" id="tts-name-badge-lbl"></span>
         </button>
 
+      </div>
+
+      <!-- TTS Blocklist by Name -->
+      <div style="display:flex;flex-direction:column;gap:7px;">
+        <div style="display:flex;align-items:center;gap:7px;">
+          <span style="font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;letter-spacing:.6px;color:var(--mute);flex-shrink:0;">BLOCK TTS</span>
+          <div style="flex:1;height:1px;background:var(--sep);"></div>
+        </div>
+        <div style="display:flex;gap:5px;">
+          <input id="tts-block-input" class="sett-input" type="text" placeholder="ชื่อผู้เล่น (Name) ที่ไม่ให้อ่าน…" style="flex:1;font-size:12px;"
+            onkeydown="if(event.key==='Enter'){addTtsBlockId();}" autocomplete="off" spellcheck="false">
+          <button class="btn btn-ghost btn-sm" onclick="addTtsBlockId()" style="flex-shrink:0;padding:4px 11px;display:inline-flex;align-items:center;gap:4px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+            เพิ่ม
+          </button>
+        </div>
+        <div id="tts-block-list" style="display:flex;flex-wrap:wrap;gap:4px;min-height:0;"></div>
       </div>
 
       <!-- Engine selector — 3 cards -->
@@ -3361,24 +3313,7 @@ input[type=range]:not(#ccp-hue):not(.bg-range)::-moz-range-progress {
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#00b4ff" viewBox="0 0 16 16"><path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/></svg>
         Test: Show Toast
       </button>
-      <button onclick="(function(){
-        const btn=document.getElementById('tts-speaking-btn');
-        if(!btn)return;
-        btn.classList.add('visible');
-        clearTimeout(window._devWaveTimer);
-        window._devWaveTimer=setTimeout(()=>btn.classList.remove('visible'),4000);
-        typeof showToast==='function'&&showToast('🎵 Waveform test — หายใน 4 วิ');
-      })()"
-        style="display:flex;align-items:center;gap:10px;
-               padding:9px 12px;border-radius:9px;border:1px solid #00ffa322;
-               background:#00ffa308;color:rgba(255,255,255,0.75);
-               font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:.3px;
-               cursor:pointer;transition:all .15s;text-align:left;width:100%;"
-        onmouseenter="this.style.background='#00ffa318';this.style.borderColor='#00ffa355';this.style.color='#00ffa3'"
-        onmouseleave="this.style.background='#00ffa308';this.style.borderColor='#00ffa322';this.style.color='rgba(255,255,255,0.75)'">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#00ffa3" viewBox="0 0 16 16"><path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13s1.12-2 2.5-2 2.5.896 2.5 2m9-2c0 1.105-1.12 2-2.5 2s-2.5-.896-2.5-2 1.12-2 2.5-2 2.5.896 2.5 2m-9 2V3l9-2v10z"/></svg>
-        Test: Show Waveform (4s)
-      </button>
+
 
     </div>
 
@@ -3778,6 +3713,7 @@ input[type=range]:not(#ccp-hue):not(.bg-range)::-moz-range-progress {
       <input type="checkbox" id="cfg-orig"   checked style="display:none">
       <input type="checkbox" id="cfg-scroll" checked style="display:none">
       <input type="checkbox" id="cfg-tl"     checked style="display:none">
+      <input type="checkbox" id="cfg-showid"  checked style="display:none">
       <button class="ch-pill-btn active" id="disp-pill-name"
         style="--pill-color:#a8d8ff;width:100%;justify-content:flex-start;padding:5px 12px"
         onclick="toggleDispPill('name')">
@@ -3792,6 +3728,11 @@ input[type=range]:not(#ccp-hue):not(.bg-range)::-moz-range-progress {
         style="--pill-color:#a78bfa;width:100%;justify-content:flex-start;padding:5px 12px"
         onclick="toggleDispPill('tl')">
         <span class="ch-pill-icon" style="display:inline-flex;align-items:center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z"/><path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.065.147.185.371.249.496.2.05 1.364-.39 2.265-1.233a4 4 0 0 0 .596.807c-.81.92-1.92 1.508-3.012 1.744-.113-.207-.285-.52-.38-.72 1.063-.224 2.044-.742 2.78-1.562A9 9 0 0 1 9.31 13.5a9 9 0 0 1-.785-1.348c-.15.04-.3.072-.45.099l-.032-.006c-.023-.04-.051-.1-.072-.145a9 9 0 0 0 .511-.107 8 8 0 0 1-.576-1.64 8 8 0 0 1-.137-2.146c.3-.106.621-.185.957-.235.014.071.027.143.038.216-.307.044-.6.113-.876.207a7 7 0 0 0 .133 1.948 7 7 0 0 0 .54 1.562 8 8 0 0 0 .764 1.22 8 8 0 0 0 .73-1.133 8 8 0 0 0 .468-1.37c-.275-.093-.568-.162-.876-.207.01-.073.024-.145.038-.216.336.05.657.13.957.235a8 8 0 0 1-.137 2.146"/></svg></span><span>แสดงข้อความที่แปลแล้ว</span>
+      </button>
+      <button class="ch-pill-btn active" id="disp-pill-showid"
+        style="--pill-color:#ffcc00;width:100%;justify-content:flex-start;padding:5px 12px"
+        onclick="toggleDispPill('showid')">
+        <span class="ch-pill-icon" style="display:inline-flex;align-items:center"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3 4.5h10a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-5a1 1 0 0 1 1-1m0-1a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2z"/><path d="M4 6.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1zm5-2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"/></svg></span><span>แสดง ID ผู้เล่น</span>
       </button>
       <button class="ch-pill-btn active" id="disp-pill-scroll"
         style="--pill-color:#00ffa3;width:100%;justify-content:flex-start;padding:5px 12px"
@@ -4616,6 +4557,7 @@ let autoScroll    = true;
 let showName      = true;
 let showOrig      = true;
 let showTl        = true;
+let showPlayerId  = true;
 let searchKw      = "";
 let ttsReadName   = (() => {
   try {
@@ -4938,6 +4880,62 @@ const ttsQueue = [];   // [{text, type, speaker}]
 let ttsPlaying = false;
 let ttsCurrent = null;
 
+// ── TTS Blocklist (block by player name) ─────────────────
+const TTS_BLOCK_KEY = "ttsBlockList";
+let ttsBlockSet = new Set(
+  JSON.parse(localStorage.getItem(TTS_BLOCK_KEY) || "[]").map(n => n.toLowerCase())
+);
+
+function saveTtsBlockList() {
+  localStorage.setItem(TTS_BLOCK_KEY, JSON.stringify([...ttsBlockSet]));
+}
+
+function renderTtsBlockList() {
+  const container = document.getElementById("tts-block-list");
+  if (!container) return;
+  container.innerHTML = "";
+  if (ttsBlockSet.size === 0) {
+    container.innerHTML = `<span style="font-size:10px;color:var(--mute);font-style:italic;">ยังไม่มีรายการ block</span>`;
+    return;
+  }
+  ttsBlockSet.forEach(name => {
+    const tag = document.createElement("span");
+    tag.style.cssText = `display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 10px;
+      border-radius:20px;background:rgba(255,77,109,0.12);border:1px solid rgba(255,77,109,0.3);
+      font-size:11px;color:var(--red);font-family:'Noto Sans Thai','Rajdhani',sans-serif;cursor:default;`;
+    tag.title = `Block: ${name}`;
+    const lbl = document.createElement("span");
+    lbl.textContent = name;
+    const rm = document.createElement("button");
+    rm.style.cssText = `background:none;border:none;color:var(--red);cursor:pointer;padding:0 0 0 2px;
+      display:inline-flex;align-items:center;opacity:0.6;font-size:13px;line-height:1;`;
+    rm.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/></svg>`;
+    rm.title = "ลบออก";
+    rm.onmouseenter = () => rm.style.opacity = "1";
+    rm.onmouseleave = () => rm.style.opacity = "0.6";
+    rm.onclick = () => { ttsBlockSet.delete(name); saveTtsBlockList(); renderTtsBlockList(); };
+    tag.appendChild(lbl);
+    tag.appendChild(rm);
+    container.appendChild(tag);
+  });
+}
+
+function addTtsBlockId() {
+  const inp = document.getElementById("tts-block-input");
+  if (!inp) return;
+  const val = inp.value.trim();
+  if (!val) return;
+  ttsBlockSet.add(val.toLowerCase());
+  saveTtsBlockList();
+  renderTtsBlockList();
+  inp.value = "";
+  inp.focus();
+}
+
+// init render on DOM ready
+document.addEventListener("DOMContentLoaded", renderTtsBlockList);
+// ─────────────────────────────────────────────────────────
+
 function ttsEnqueue(text, type, speaker) {
   if (ttsAutoSkip) return;   // auto-skip mode — ทิ้งทุก message
   // type: "bouyomi"
@@ -4999,15 +4997,9 @@ function ttsUpdateBar() {
   const bar   = document.getElementById("tts-queue-bar");
   const txtEl = document.getElementById("tts-q-text");
   const cntEl = document.getElementById("tts-q-count");
-  const speakBtn = document.getElementById("tts-speaking-btn");
   if (!bar) return;
   if (!ttsPlaying && ttsQueue.length === 0) { ttsHideBar(); return; }
   bar.classList.add("visible");
-  // โชว์ waveform เฉพาะเมื่อเปิด toggle
-  if (speakBtn) {
-    const waveOn = document.getElementById("cfg-tts-waveform")?.checked !== false;
-    if (waveOn) speakBtn.classList.add("visible");
-  }
   const current = ttsCurrent ? ttsCurrent.text : (ttsQueue[0] ? ttsQueue[0].text : "");
   if (txtEl) txtEl.textContent = current;
   if (cntEl) cntEl.textContent = ttsQueue.length > 0 ? `+${ttsQueue.length} รอ` : "";
@@ -5016,26 +5008,6 @@ function ttsUpdateBar() {
 function ttsHideBar() {
   const bar = document.getElementById("tts-queue-bar");
   if (bar) bar.classList.remove("visible");
-  const speakBtn = document.getElementById("tts-speaking-btn");
-  if (speakBtn) speakBtn.classList.remove("visible");
-}
-
-function toggleTtsWaveformPill() {
-  const cb    = document.getElementById("cfg-tts-waveform");
-  const pill  = document.getElementById("disp-pill-ttswaveform");
-  const sw    = document.getElementById("tts-waveform-sw");
-  const badge = document.getElementById("tts-waveform-badge-lbl");
-  if (!cb) return;
-  cb.checked = !cb.checked;
-  const on = cb.checked;
-  pill?.classList.toggle("active", on);
-  sw?.classList.toggle("on", on);
-  // badge dot only — no text
-  // ซ่อน waveform ทันทีถ้าปิด
-  const speakBtn = document.getElementById("tts-speaking-btn");
-  if (speakBtn && !on) speakBtn.classList.remove("visible");
-  // โชว์อีกครั้งถ้าเปิดและ TTS กำลังทำงาน
-  if (speakBtn && on && ttsPlaying) speakBtn.classList.add("visible");
 }
 
 // ── Socket events ─────────────────────────────────────
@@ -5122,10 +5094,13 @@ socket.on("message", data => {
   const stat = document.getElementById("lbl-stat");
   if (stat) stat.textContent = `ข้อความ: ${nMsg}  แปลแล้ว: ${nTl}`;
   updateSbStats();
+  addDebug(`[id] ${data.ch} ${data.name} → ${data.player_id || '?'}: ${(data.orig||'').slice(0,50)}`);
 
   // TTS อ่านจาก OG (filtered) ทันที — ไม่รอแปล
+  const _senderName = (data.name || "").toLowerCase();
+  const _ttsBlocked = ttsBlockSet.has(_senderName);
   const speakText = ttsReadName ? `${data.name}: ${filtered}` : filtered;
-  if (appSoundEnabled && ttsCh.has(data.ch)) {
+  if (appSoundEnabled && ttsCh.has(data.ch) && !_ttsBlocked) {
     if (document.getElementById("cfg-bouyomi")?.checked) {
       ttsEnqueue(speakText, "bouyomi");
     } else if (document.getElementById("cfg-webspeech")?.checked) {
@@ -5241,6 +5216,18 @@ function addBubble(d) {
     nm.style.cssText = "flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px";
     nm.textContent = d.name;
     hdr.appendChild(nm);
+  }
+
+  // Player ID badge
+  if (showPlayerId && d.player_id) {
+    const idBadge = document.createElement("span");
+    idBadge.className = "player-id-badge";
+    idBadge.textContent = d.player_id;
+    idBadge.style.cssText = "font-family:monospace;font-size:9px;color:var(--mute);opacity:0.55;flex-shrink:0;letter-spacing:0.3px;padding:1px 4px;border-radius:3px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);cursor:default;transition:opacity .15s;user-select:text;-webkit-user-select:text;";
+    idBadge.title = `Player ID: ${d.player_id}`;
+    idBadge.onmouseenter = () => { idBadge.style.opacity = "1"; idBadge.style.color = "var(--fg)"; };
+    idBadge.onmouseleave = () => { idBadge.style.opacity = "0.55"; idBadge.style.color = "var(--mute)"; };
+    hdr.appendChild(idBadge);
   }
 
   const spacer = document.createElement("span");
@@ -5919,9 +5906,10 @@ function collectSettings() {
       return tb ? tb.checked : false;
     });
   autoScroll  = document.getElementById("cfg-scroll")?.checked ?? autoScroll;
-  showName    = document.getElementById("cfg-name")?.checked ?? showName;
-  showOrig    = document.getElementById("cfg-orig")?.checked ?? showOrig;
-  showTl      = document.getElementById("cfg-tl")?.checked ?? showTl;
+  showName      = document.getElementById("cfg-name")?.checked ?? showName;
+  showOrig      = document.getElementById("cfg-orig")?.checked ?? showOrig;
+  showTl        = document.getElementById("cfg-tl")?.checked ?? showTl;
+  showPlayerId  = document.getElementById("cfg-showid")?.checked ?? showPlayerId;
   syncAutoScrollBtn();
   const bouyomiEnabled = document.getElementById("cfg-bouyomi")?.checked ?? false;
   const bouyomiPort    = parseInt(document.getElementById("cfg-bouyomi-port")?.value) || 50080;
@@ -6114,6 +6102,7 @@ function gatherAllSettings() {
   // tts channels
   s.tts_channels = [...ttsCh];
   s.ttsReadName  = ttsReadName;
+  s.show_player_id = document.getElementById("cfg-showid")?.checked ?? true;
   // display extras
   s.font_size    = parseInt(localStorage.getItem("chatFontSize") ?? "15");
   s.name_size    = parseInt(localStorage.getItem("nameSize")     ?? "15");
@@ -6182,6 +6171,14 @@ function applyAllSettings(s) {
     ttsReadName = s.ttsReadName;
     localStorage.setItem("ttsReadName", ttsReadName);
     if (typeof syncTtsNameBtn === "function") syncTtsNameBtn();
+  }
+  if (s.show_player_id !== undefined) {
+    showPlayerId = s.show_player_id;
+    const cbSi = document.getElementById("cfg-showid");
+    const pillSi = document.getElementById("disp-pill-showid");
+    if (cbSi) cbSi.checked = showPlayerId;
+    if (pillSi) { if (showPlayerId) pillSi.classList.add("active"); else pillSi.classList.remove("active"); }
+    document.querySelectorAll(".player-id-badge").forEach(el => { el.style.display = showPlayerId ? "" : "none"; });
   }
   // display extras — ฟังก์ชันเหล่านี้ประกาศทีหลัง ต้อง guard
   if (s.font_size) {
@@ -6367,6 +6364,7 @@ function toggleDispPill(key) {
     scroll:  { cb: "cfg-scroll",   pill: "disp-pill-scroll"  },
     ttsname: { cb: "cfg-tts-name", pill: "disp-pill-ttsname" },
     tl:      { cb: "cfg-tl",       pill: "disp-pill-tl"      },
+    showid:  { cb: "cfg-showid",   pill: "disp-pill-showid"  },
   };
   const m = map[key]; if (!m) return;
   const cb   = document.getElementById(m.cb);
@@ -6391,6 +6389,12 @@ function toggleDispPill(key) {
     showTl = cb.checked;
     document.querySelectorAll(".msg-tl, .msg-divider").forEach(el => {
       el.style.display = showTl ? "" : "none";
+    });
+  }
+  if (key === "showid") {
+    showPlayerId = cb.checked;
+    document.querySelectorAll(".player-id-badge").forEach(el => {
+      el.style.display = showPlayerId ? "" : "none";
     });
   }
   }
@@ -6429,7 +6433,7 @@ async function sendTestChat() {
   const src = document.getElementById("cfg-src")?.value || "auto";
   let tl = null;
   if (shouldTranslate(msg, src)) tl = await translateText(msg, tgt, api, getTranslateOpts());
-  addBubble({ ts, name, ch, orig: msg, tl, clean: msg });
+  addBubble({ ts, name, ch, orig: msg, tl, clean: msg, player_id: "00000000" });
 }
 
 function sendTestTts() {
@@ -9540,7 +9544,7 @@ function _nyApplyTab(tab) {
   // If switching to chat tab, render TTS buttons and sync display pills
   if (tab === 'chat') {
     if (typeof renderTtsChSettings === 'function') renderTtsChSettings();
-    const _dispMap = { name:'cfg-name', orig:'cfg-orig', scroll:'cfg-scroll', ttsname:'cfg-tts-name', tl:'cfg-tl' };
+    const _dispMap = { name:'cfg-name', orig:'cfg-orig', scroll:'cfg-scroll', ttsname:'cfg-tts-name', tl:'cfg-tl', showid:'cfg-showid' };
     Object.entries(_dispMap).forEach(([key, cbId]) => {
       const cb   = document.getElementById(cbId);
       const pill = document.getElementById('disp-pill-' + key);
@@ -9582,6 +9586,12 @@ function nyannSwitchTab(tab) {
 }
 
 // ── TTS Panel sync: no longer needed (tts-panel uses real IDs directly) ──
+// Render TTS blocklist whenever TTS tab is shown
+const _origNyannSwitchTab = nyannSwitchTab;
+nyannSwitchTab = function(tab) {
+  _origNyannSwitchTab(tab);
+  if (tab === 'tts') setTimeout(renderTtsBlockList, 150);
+};
 
 function openNyannApp(tab) {
   _nyStashOrigins();
