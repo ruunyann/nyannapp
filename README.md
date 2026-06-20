@@ -57,10 +57,14 @@ PSO2 NGS がローカルに書き出す ChatLog*.txt
 | **スパム対策フィルター** | 重複メッセージ・連投（Flood）を自動スキップ |
 | **Regex フィルター** | 正規表現でメッセージを細かくフィルタリング（インポート/エクスポート対応）。[棒読みちゃん](https://chi.usamimi.info/Program/Application/BouyomiChan/) および [PSO2yomi](https://plan301e.web.fc2.com/plan/psuyomi3.html) のフィルター仕様を参考にしています |
 | **ブロックリスト** | 特定プレイヤーのメッセージを非表示にする永続ブロック機能 |
-| **ブックマーク** | メッセージを保存してあとから見返せるブックマーク機能 |
 | **翻訳** | Google Unofficial / MyMemory / Groq AI / OpenAI GPT / Google Gemini / Anthropic Claude 対応（要インターネット） |
 | **TTS 読み上げ** | [VOICEVOX](https://voicevox.hiroshiba.jp/) / [棒読みちゃん](https://chi.usamimi.info/Program/Application/BouyomiChan/) / Web Speech API 対応 |
 | **VOICEVOX キャッシュ** | 読み上げ音声をローカルキャッシュして通信量と待機時間を削減 |
+| **VOICEVOX 単語置換** | 読み上げ前にテキストを置換するルールを自由に設定（棒読みちゃんのデフォルト辞書を内蔵） |
+| **DLC / プラグイン** | `.zip` ファイルからプラグインをインストール・管理。プラグイン UI をアプリ内に直接埋め込み表示。自動起動 ON/OFF も設定可能 |
+| **NYANN Browser** | アプリ内ブラウザウィンドウ。外部ページをテーマに合わせて表示。UI は日本語 / English 切替対応 |
+| **翻訳テキストの色分け** | 翻訳結果の表示色を「言語別」または「チャット（プレイヤー / チャンネル）別」に設定可能。設定変更は即時反映 |
+| **チャット履歴** | 起動時に過去 N 時間分のログを自動読み込み。NGS / Classic 両対応。次回から同じ設定を記憶するオプション付き。 |
 | **テーマ / カスタマイズ** | 8種類のプリセットテーマ + カスタムカラー対応 |
 | **背景画像** | URL または ローカルファイルで背景画像を設定可能 |
 | **フォントサイズ調整** | スライダーでメッセージ文字サイズをリアルタイム変更 |
@@ -99,7 +103,19 @@ PSO2 NGS がローカルに書き出す ChatLog*.txt
 
 設定タブの翻訳セクションで翻訳エンジン・翻訳元言語・翻訳先言語を選択してください。Groq AI / OpenAI / Gemini / Claude を使う場合は各 API キーが必要です。Google Unofficial と MyMemory はキー不要で無料で使用できます。
 
-### 5. 背景画像の変更
+### 5. チャット履歴の読み込み
+
+起動時に「Chat History」モーダルが表示されます。読み込む時間数を選択するか、スキップ可能です。「Remember」をチェックすると次回から同じ設定で自動適用されます。
+
+### 6. DLC / プラグインの管理
+
+ツールバーの **DLC** ボタンからプラグインパネルを開けます。
+
+- **＋ Add DLC (.zip)**: `.zip` 形式のプラグインをインストール
+- 各プラグインで **RUN** / **STOP** の切り替え、**自動起動 ON/OFF**、フォルダを開く、アンインストールが可能
+- プラグイン UI はアプリ内に直接埋め込んで表示できます
+
+### 7. 背景画像の変更
 
 #### URL を使って背景を設定する
 
@@ -118,27 +134,6 @@ PSO2 NGS がローカルに書き出す ChatLog*.txt
 
 ---
 
-## 🎨 アイコン・デザインについて
-
-### アプリアイコン（icon.ico）
-
-アプリアイコンは **9年前に手描きで作成したオリジナルデザイン** です。  
-AI 生成ではなく、人間が一から描いたものです。
-
-### UI アイコン（SVG）
-
-アプリ内で使用している UI アイコン（ボタン・メニューなどのアイコン）は **Bootstrap Icons** を使用しています。
-
-- ライセンス: [MIT License](https://github.com/twbs/icons/blob/main/LICENSE)
-- 公式サイト: [https://icons.getbootstrap.com/](https://icons.getbootstrap.com/)
-
-### コードについて
-
-アプリのデザイン・設計・機能仕様は **人間が考案・ディレクション** しています。  
-コードの一部には **AI（Claude by Anthropic）が開発補助として活用** されています。
-
----
-
 ## 🔒 プライバシー & アップデート
 
 ### データの収集について
@@ -149,13 +144,6 @@ AI 生成ではなく、人間が一から描いたものです。
 - analytics・telemetry などの外部送信は一切なし
 - 翻訳機能を使用した場合のみ、選択した翻訳 API へメッセージが送信されます（翻訳 OFF 時は送信なし）
 
-### 自動アップデートについて
-
-- アプリ起動時および **30分ごと** に GitHub Releases を確認します
-- 新バージョンが見つかると自動でダウンロードし、UI に通知が表示されます
-- インストールのタイミングは**ユーザーが選択**します（自動で再起動はしません）
-- メニューバーの **Check for Updates** からいつでも手動確認できます
-
 ---
 
 ## 🛠️ 技術スタック
@@ -164,6 +152,7 @@ AI 生成ではなく、人間が一から描いたものです。
 - **Node.js** — ログ監視 / WebSocket サーバー
 - **HTML / CSS / JavaScript** — UI
 - **Socket.IO** — リアルタイム通信（localhost のみ）
+- **Express** — 組み込み HTTP サーバー（API）
 - **Bootstrap Icons** — UI アイコン（MIT License）
 - **[VOICEVOX](https://voicevox.hiroshiba.jp/) / [棒読みちゃん](https://chi.usamimi.info/Program/Application/BouyomiChan/) / Web Speech API** — TTS エンジン
 
@@ -223,10 +212,14 @@ PSO2 NGS writes ChatLog*.txt to local disk
 | **Anti-spam filter** | Auto-skips duplicate messages and flood (rapid repeat) messages |
 | **Regex filter** | Fine-grained message filtering with regular expressions (import/export supported). Filter design inspired by [棒読みちゃん](https://chi.usamimi.info/Program/Application/BouyomiChan/) and [PSO2yomi](https://plan301e.web.fc2.com/plan/psuyomi3.html) |
 | **Block list** | Permanently hide messages from specific players |
-| **Bookmarks** | Save messages to revisit them later |
 | **Translation** | Google Unofficial / MyMemory / Groq AI / OpenAI GPT / Google Gemini / Anthropic Claude (requires internet) |
 | **TTS** | [VOICEVOX](https://voicevox.hiroshiba.jp/) / [Bouyomi-chan](https://chi.usamimi.info/Program/Application/BouyomiChan/) / Web Speech API support |
 | **VOICEVOX audio cache** | Caches synthesized audio locally to reduce latency and network usage |
+| **VOICEVOX word replacements** | Define custom text substitution rules applied before TTS. Ships with Bouyomi-chan's default dictionary built-in |
+| **DLC / Plugins** | Install plugins from `.zip` files, manage them from a side panel, and embed plugin UIs directly inside the app. Per-plugin auto-start toggle supported |
+| **NYANN Browser** | Built-in browser window for external pages, themed to match the app. UI supports Japanese / English switching |
+| **Translated-text color** | Color translated text by **language** or by **chat (player / channel)**. Changes apply instantly |
+| **Chat history** | Load the past N hours of chat on startup, from NGS and/or Classic logs |
 | **Theme / Customization** | 8 preset themes + custom accent color |
 | **Background image** | Set background via URL or local file |
 | **Font size control** | Adjust message text size in real time with a slider |
@@ -265,7 +258,19 @@ Click the channel buttons in the toolbar (PUBLIC / PARTY / WHISPER / TEAM / GUIL
 
 In the Settings tab, choose your translation engine, source language, and target language. Groq AI, OpenAI GPT, Google Gemini, and Anthropic Claude require their respective API keys. Google Unofficial and MyMemory are free with no API key needed.
 
-### 5. Change the background image
+### 5. Load chat history
+
+A **Chat History** prompt appears on startup. Choose how many hours back to load, or skip it. Check **Remember** to apply the same choice automatically next time.
+
+### 6. Manage DLC / Plugins
+
+Click the **DLC** button in the toolbar to open the plugin panel.
+
+- **＋ Add DLC (.zip)**: Install a plugin from a `.zip` file
+- Each plugin supports **RUN / STOP** toggle, **auto-start on launch** toggle, open folder, and uninstall
+- Plugin UIs can be embedded directly inside the app window
+
+### 7. Change the background image
 
 #### Using a URL
 
@@ -283,27 +288,6 @@ Click the folder icon next to the background image input and select an image fil
 
 ---
 
-## 🎨 Icons & Design Credits
-
-### App icon (icon.ico)
-
-The app icon is an **original hand-drawn design created 9 years ago**.  
-It is not AI-generated — drawn entirely by a human from scratch.
-
-### UI icons (SVG)
-
-All UI icons used in buttons, menus, and panels come from **Bootstrap Icons**.
-
-- License: [MIT License](https://github.com/twbs/icons/blob/main/LICENSE)
-- Official site: [https://icons.getbootstrap.com/](https://icons.getbootstrap.com/)
-
-### About the code
-
-The app's design, concept, and feature direction were **created and directed by a human **.  
-**AI (Claude by Anthropic) was used as a coding assistant** during development.
-
----
-
 ## 🔒 Privacy & Updates
 
 ### Data Collection
@@ -314,13 +298,6 @@ This app **does not collect or transmit any user data**.
 - No analytics or telemetry of any kind
 - If translation is enabled, messages are sent only to the translation API you selected — nothing is sent when translation is off
 
-### Auto-Update
-
-- The app checks GitHub Releases on startup and **every 30 minutes**
-- When a new version is found, it downloads automatically and notifies you in the UI
-- **You choose when to install** — the app never restarts on its own
-- You can also check manually anytime via **Check for Updates** in the menu bar
-
 ---
 
 ## 🛠️ Tech Stack
@@ -329,6 +306,7 @@ This app **does not collect or transmit any user data**.
 - **Node.js** — Log watcher / WebSocket server
 - **HTML / CSS / JavaScript** — UI
 - **Socket.IO** — Real-time communication (localhost only)
+- **Express** — Embedded HTTP server (API)
 - **Bootstrap Icons** — UI icons (MIT License)
 - **[VOICEVOX](https://voicevox.hiroshiba.jp/) / [Bouyomi-chan](https://chi.usamimi.info/Program/Application/BouyomiChan/) / Web Speech API** — TTS engines
 
@@ -386,10 +364,14 @@ PSO2 NGS บันทึก ChatLog*.txt ลงในเครื่อง
 | **Anti-Spam** | ข้ามข้อความซ้ำและการส่งซ้ำถี่ (Flood) อัตโนมัติ |
 | **Regex Filter** | กรองข้อความด้วย Regular Expression (นำเข้า/ส่งออกได้) ได้รับแรงบันดาลใจจาก [棒読みちゃん](https://chi.usamimi.info/Program/Application/BouyomiChan/) และ [PSO2yomi](https://plan301e.web.fc2.com/plan/psuyomi3.html) |
 | **Block List** | บล็อกผู้เล่นที่ไม่ต้องการเห็นข้อความแบบถาวร |
-| **Bookmark** | บันทึกข้อความที่น่าสนใจเอาไว้ดูภายหลัง |
 | **แปลภาษา** | รองรับ Google Unofficial / MyMemory / Groq AI / OpenAI GPT / Google Gemini / Anthropic Claude (ต้องมีอินเทอร์เน็ต) |
 | **TTS อ่านออกเสียง** | รองรับ [VOICEVOX](https://voicevox.hiroshiba.jp/) / [棒読みちゃん](https://chi.usamimi.info/Program/Application/BouyomiChan/) / Web Speech API |
 | **VOICEVOX Cache** | แคชเสียงที่สังเคราะห์แล้วไว้ในเครื่อง ลดเวลารอและ traffic |
+| **VOICEVOX Word Replacements** | กำหนดกฎแทนที่คำก่อนอ่านออกเสียง พร้อมพจนานุกรมเริ่มต้นจาก 棒読みちゃん |
+| **DLC / Plugin** | ติดตั้งปลั๊กอินจากไฟล์ `.zip` จัดการผ่าน panel ด้านข้าง แสดง UI ของปลั๊กอินแบบฝังในแอปได้ ตั้งค่าเปิดอัตโนมัติได้ |
+| **NYANN Browser** | หน้าต่างเบราว์เซอร์ในแอป ใช้ธีมเดียวกับแอปหลัก รองรับสลับภาษา 日本語 / English |
+| **สีข้อความแปล** | กำหนดสีข้อความแปลแยกตาม **ภาษา** หรือแยกตาม **แชท (ผู้เล่น / ช่อง)** การเปลี่ยนแปลงมีผลทันที |
+| **Chat History** | โหลดข้อความย้อนหลัง N ชั่วโมงตอนเปิดแอป รองรับทั้ง NGS และ Classic |
 | **ธีม / ปรับแต่ง** | 8 ธีมสำเร็จ + กำหนดสีเองได้ |
 | **ภาพพื้นหลัง** | ตั้งพื้นหลังจาก URL หรือไฟล์ในเครื่อง |
 | **ปรับขนาดตัวอักษร** | เปลี่ยนขนาดข้อความแบบเรียลไทม์ด้วย Slider |
@@ -428,7 +410,19 @@ PSO2 NGS บันทึก ChatLog*.txt ลงในเครื่อง
 
 ไปที่แท็บ Settings เลือก Engine แปล ภาษาต้นทาง และภาษาปลายทาง Groq AI / OpenAI GPT / Google Gemini / Anthropic Claude ต้องใช้ API Key ของแต่ละบริการ ส่วน Google Unofficial และ MyMemory ใช้ฟรีไม่ต้องมี Key
 
-### 5. เปลี่ยนภาพพื้นหลัง
+### 5. โหลด Chat History
+
+เมื่อเปิดแอปจะมีหน้าต่าง **Chat History** ให้เลือกจำนวนชั่วโมงที่ต้องการโหลดย้อนหลัง หรือจะกด Skip ก็ได้ ถ้าเช็ก **Remember** แอปจะจำค่านี้ไว้ใช้ครั้งต่อไปอัตโนมัติ
+
+### 6. จัดการ DLC / Plugin
+
+คลิกปุ่ม **DLC** ในแถบเครื่องมือเพื่อเปิด panel จัดการปลั๊กอิน
+
+- **＋ Add DLC (.zip)**: ติดตั้งปลั๊กอินจากไฟล์ `.zip`
+- แต่ละปลั๊กอินสามารถ **RUN / STOP** เปิดพร้อมแอป (**Auto-start**) เปิดโฟลเดอร์ และถอนการติดตั้งได้
+- UI ของปลั๊กอินสามารถแสดงแบบฝังอยู่ในหน้าต่างแอปหลักได้เลย
+
+### 7. เปลี่ยนภาพพื้นหลัง
 
 #### ใช้ URL
 
@@ -446,27 +440,6 @@ PSO2 NGS บันทึก ChatLog*.txt ลงในเครื่อง
 
 ---
 
-## 🎨 เครดิตไอคอนและดีไซน์
-
-### ไอคอนแอป (icon.ico)
-
-ไอคอนแอปนี้เป็น **ดีไซน์ออริจินัลที่วาดด้วยมือตั้งแต่ 9 ปีก่อน**   
-ไม่ใช่ AI สร้าง — วาดโดยมนุษย์ตั้งแต่ต้น
-
-### ไอคอน UI (SVG)
-
-ไอคอนที่ใช้ในปุ่ม เมนู และส่วนประกอบต่างๆ ของแอป มาจาก **Bootstrap Icons**
-
-- ลิขสิทธิ์: [MIT License](https://github.com/twbs/icons/blob/main/LICENSE)
-- เว็บไซต์อย่างเป็นทางการ: [https://icons.getbootstrap.com/](https://icons.getbootstrap.com/)
-
-### เกี่ยวกับโค้ด
-
-แนวคิด ดีไซน์ และฟีเจอร์ของแอปทั้งหมด **ออกแบบและกำกับโดยมนุษย์ **  
-มีการใช้ **AI (Claude by Anthropic) เป็นผู้ช่วยในการเขียนโค้ด** ระหว่างการพัฒนา
-
----
-
 ## 🔒 ความเป็นส่วนตัวและการอัปเดต
 
 ### การเก็บข้อมูล
@@ -477,13 +450,6 @@ PSO2 NGS บันทึก ChatLog*.txt ลงในเครื่อง
 - ไม่มี analytics หรือ telemetry ใดๆ
 - หากเปิดใช้การแปลภาษา ข้อความจะถูกส่งไปยัง API ที่เลือกเท่านั้น — หากปิดการแปล จะไม่มีการส่งข้อมูลออกไป
 
-### การอัปเดต
-
-- แอปตรวจสอบ GitHub Releases ตอนเปิดโปรแกรม และ **ทุก 30 นาที**
-- เมื่อพบเวอร์ชันใหม่ จะดาวน์โหลดอัตโนมัติและแจ้งเตือนใน UI
-- **ผู้ใช้เป็นคนเลือกเวลาติดตั้งเอง** แอปจะไม่ restart โดยอัตโนมัติ
-- ตรวจสอบการอัปเดตด้วยตัวเองได้ตลอดเวลาผ่าน **Check for Updates** ในเมนูบาร์
-
 ---
 
 ## 🛠️ เทคโนโลยีที่ใช้
@@ -492,6 +458,7 @@ PSO2 NGS บันทึก ChatLog*.txt ลงในเครื่อง
 - **Node.js** — ระบบติดตาม log / WebSocket server
 - **HTML / CSS / JavaScript** — UI
 - **Socket.IO** — การสื่อสารเรียลไทม์ (localhost เท่านั้น)
+- **Express** — HTTP server ในตัว (API)
 - **Bootstrap Icons** — ไอคอน UI (MIT License)
 - **[VOICEVOX](https://voicevox.hiroshiba.jp/) / [棒読みちゃん](https://chi.usamimi.info/Program/Application/BouyomiChan/) / Web Speech API** — TTS engine
 
