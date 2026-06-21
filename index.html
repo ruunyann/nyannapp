@@ -42,32 +42,77 @@ body::before {
   pointer-events: none;
 }
 
-/* ── STAR BG ── */
+/* ── ANIMATED BG: Particle Network + 3-Layer Twinkling Stars ── */
 #stars {
   position: fixed; inset: 0; z-index: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0,60,120,0.35) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(60,0,80,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0,60,120,0.30) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(60,0,80,0.20) 0%, transparent 60%),
     #010a18;
   overflow: hidden;
 }
-#stars::after {
-  content: '';
+#stars canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+#stars .stars-far, #stars .stars-mid, #stars .stars-near {
   position: absolute; inset: 0;
+  background-repeat: repeat;
+  pointer-events: none;
+}
+#stars .stars-far {
   background-image:
-    radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 50% 20%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 15% 70%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 45% 85%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 65% 30%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 85% 50%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 25% 90%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 55% 55%, rgba(0,180,255,0.5) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 75% 25%, rgba(255,110,180,0.4) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 35% 75%, rgba(0,255,163,0.4) 0%, transparent 100%);
+    radial-gradient(1px 1px at 8% 12%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 22% 38%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 38% 6%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 52% 62%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 68% 28%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 81% 71%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 91% 18%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 14% 84%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 44% 91%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 63% 95%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 4% 50%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 97% 55%, #fff 0%, transparent 100%);
+  opacity: 0.35;
+  animation: twinkleFar 6s ease-in-out infinite;
+}
+#stars .stars-mid {
+  background-image:
+    radial-gradient(1.3px 1.3px at 12% 22%, #fff 0%, transparent 100%),
+    radial-gradient(1.3px 1.3px at 30% 55%, rgba(0,180,255,0.9) 0%, transparent 100%),
+    radial-gradient(1.3px 1.3px at 47% 14%, #fff 0%, transparent 100%),
+    radial-gradient(1.3px 1.3px at 58% 78%, #fff 0%, transparent 100%),
+    radial-gradient(1.3px 1.3px at 73% 42%, rgba(255,110,180,0.9) 0%, transparent 100%),
+    radial-gradient(1.3px 1.3px at 86% 86%, #fff 0%, transparent 100%),
+    radial-gradient(1.3px 1.3px at 95% 32%, #fff 0%, transparent 100%),
+    radial-gradient(1.3px 1.3px at 5% 65%, #fff 0%, transparent 100%),
+    radial-gradient(1.3px 1.3px at 25% 95%, rgba(0,255,163,0.9) 0%, transparent 100%),
+    radial-gradient(1.3px 1.3px at 36% 4%, #fff 0%, transparent 100%);
+  opacity: 0.55;
+  animation: twinkleMid 4.2s ease-in-out infinite reverse;
+}
+#stars .stars-near {
+  background-image:
+    radial-gradient(1.8px 1.8px at 18% 30%, #fff 0%, transparent 100%),
+    radial-gradient(1.8px 1.8px at 41% 70%, #fff 0%, transparent 100%),
+    radial-gradient(1.8px 1.8px at 64% 20%, rgba(0,180,255,1) 0%, transparent 100%),
+    radial-gradient(1.8px 1.8px at 79% 60%, #fff 0%, transparent 100%),
+    radial-gradient(1.8px 1.8px at 9% 88%, rgba(255,110,180,1) 0%, transparent 100%),
+    radial-gradient(1.8px 1.8px at 88% 8%, #fff 0%, transparent 100%),
+    radial-gradient(1.8px 1.8px at 53% 47%, #fff 0%, transparent 100%);
+  animation: twinkleNear 3s ease-in-out infinite;
+}
+@keyframes twinkleFar  { 0%,100% { opacity: 0.15; } 50% { opacity: 0.4; } }
+@keyframes twinkleMid  { 0%,100% { opacity: 0.25; } 50% { opacity: 0.65; } }
+@keyframes twinkleNear { 0%,100% { opacity: 0.3;  } 50% { opacity: 1; } }
+
+#stars .vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 75% 75% at 50% 45%, transparent 45%, rgba(1,10,24,0.55) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #stars canvas { display: none; }
+  #stars .stars-far, #stars .stars-mid, #stars .stars-near { animation: none; opacity: 0.4; }
 }
 
 /* ── WRAPPER ── */
@@ -571,7 +616,13 @@ footer {
 </style>
 </head>
 <body>
-<div id="stars"></div>
+<div id="stars">
+  <canvas id="starsNetwork"></canvas>
+  <div class="stars-far"></div>
+  <div class="stars-mid"></div>
+  <div class="stars-near"></div>
+  <div class="vignette"></div>
+</div>
 <div class="wrapper">
 
 <!-- ══ HERO ══ -->
@@ -966,6 +1017,76 @@ observeWithDelay('.engine-card');
 observeWithDelay('.tl-chip');
 observeWithDelay('.safe-list li');
 observeWithDelay('.tech-pill');
+
+// Particle network background (skipped if reduced-motion is preferred)
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const canvas = document.getElementById('starsNetwork');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, particles;
+  const COUNT = 65;
+  const LINK_DIST = 130;
+  const colors = { blu: '0,180,255', pnk: '255,110,180', grn: '0,255,163' };
+
+  function resize() {
+    // offsetWidth/Height can read 0 before layout settles (or in some
+    // headless/screenshot renderers) — fall back to the viewport size
+    // so the canvas always covers the full screen, never a tiny corner.
+    w = canvas.width  = canvas.offsetWidth  || window.innerWidth;
+    h = canvas.height = canvas.offsetHeight || window.innerHeight;
+  }
+  function init() {
+    resize();
+    particles = Array.from({ length: COUNT }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      r: Math.random() * 1.5 + 0.6,
+      hue: Math.random() < 0.7 ? 'blu' : (Math.random() < 0.5 ? 'pnk' : 'grn'),
+    }));
+  }
+  function step() {
+    ctx.clearRect(0, 0, w, h);
+    for (const p of particles) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+    }
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const a = particles[i], b = particles[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < LINK_DIST) {
+          const alpha = (1 - dist / LINK_DIST) * 0.16;
+          ctx.strokeStyle = `rgba(0,180,255,${alpha})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    for (const p of particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${colors[p.hue]},0.85)`;
+      ctx.shadowColor = `rgba(${colors[p.hue]},0.9)`;
+      ctx.shadowBlur = 4;
+      ctx.fill();
+    }
+    requestAnimationFrame(step);
+  }
+  window.addEventListener('resize', resize);
+  window.addEventListener('load', resize);
+  init();
+  step();
+  // Re-measure shortly after first paint in case fonts/layout shifted sizing
+  setTimeout(resize, 300);
+})();
 </script>
 </body>
 </html>
