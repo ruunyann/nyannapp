@@ -3418,6 +3418,17 @@ window.electronAPI = new Proxy({}, {
   }
 });
 
+// Stub speechSynthesis to prevent browser permission popup in demo
+window.speechSynthesis = {
+  speak: function() {},
+  cancel: function() {},
+  getVoices: function() { return []; },
+  onvoiceschanged: null,
+  speaking: false,
+  pending: false,
+  paused: false
+};
+
 // Auto-apply settings-ready so the UI is visible
 document.addEventListener('DOMContentLoaded', function() {
   document.body.classList.add('settings-ready');
