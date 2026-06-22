@@ -1,6 +1,8 @@
 # NYANN!! APP!! 🐾
 
-> PSO2: New Genesis Live Chat Viewer — Read, Filter, Translate & TTS
+> PSO2: New Genesis Live Chat Viewer 
+
+DL https://github.com/ruunyann/nyannapp/releases/download/v0.42.3/NYANNAPP-Setup-0.42.3.zip
 
 ---
 
