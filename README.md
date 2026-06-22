@@ -1,16 +1,16 @@
-# NYANN!! APP!! 🐾
+# NYANNAPP!! Z z z
 
-> PSO2: New Genesis Live Chat Viewer 
+> PSO2: New Genesis Live Chat Viewer
 
-DL https://github.com/ruunyann/nyannapp/releases/download/v0.42.3/NYANNAPP-Setup-0.42.3.zip
+## Web DEMO : [NYANNAPP DEMO](https://ruunyann.github.io/nyannapp/) 
+
+## DL Setup : [NYANNAPP-Setup-0.42.3.zip](https://github.com/ruunyann/nyannapp/releases/download/v0.42.3/NYANNAPP-Setup-0.42.3.zip) 
 
 ---
 
 ## 📋 目次 / Table of Contents / สารบัญ
 
-- [日本語](#日本語)
-- [English](#english)
-- [ภาษาไทย](#ภาษาไทย)
+- [日本語](#日本語) - [English](#english) - [ภาษาไทย](#ภาษาไทย)
 
 ---
 
