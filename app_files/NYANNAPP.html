@@ -3466,6 +3466,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hide splash screen (no server to connect to in demo)
     if (typeof hideChatSplash === 'function') hideChatSplash();
   }, 300);
+
+  // ── DEMO: Fake chat messages ──────────────────────────────────────
+  setTimeout(function() {
+    if (typeof addBubble !== 'function') return;
+    var msgs = [
+      { name:'♡ ◟( ˘ ³˘)',  ch:'PARTY',   orig:'♡ ！！',          tl:'♡ !!' },
+      { name:'☆彡 ٩(ˊᗜˋ*)', ch:'PUBLIC',  orig:'☆彡 ～～',         tl:'☆彡 ～～' },
+      { name:'⚔(ง •̀_•́)ง',  ch:'PARTY',   orig:'⚔ ！！！',         tl:'⚔ !!!' },
+      { name:'(´• ω •`)',    ch:'WHISPER', orig:'(´• ω •`) ♡',     tl:'(´• ω •`) ♡' },
+      { name:'✧ (◍•ᴗ•◍)',   ch:'TEAM',    orig:'٩(ˊᗜˋ*)و ✧',      tl:'٩(ˊᗜˋ*)و ✧' },
+      { name:'✨( •̀ᴗ•́ )✨', ch:'PARTY',   orig:'✨✨✨ ！！',        tl:'✨✨✨ !!' },
+      { name:'ﾟ*｡(ˊᗜˋ*)ﾟ',  ch:'PUBLIC',  orig:'(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧',   tl:'(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧' },
+      { name:'♪ (o´ω`o)',    ch:'PARTY',   orig:'♪～ ♡♡♡',          tl:'♪～ ♡♡♡' },
+      { name:'(╯°□°）╯',     ch:'PUBLIC',  orig:'(╯°□°）╯︵ ┻━┻',   tl:'(╯°□°）╯︵ ┻━┻' },
+      { name:'ノ( ゜-゜ノ)♡', ch:'PARTY',   orig:'┬─┬ ノ( ゜-゜ノ) ♡', tl:'┬─┬ ノ( ゜-゜ノ) ♡' },
+    ];
+    var i = 0;
+    function sendNext() {
+      if (i >= msgs.length) return;
+      var m = msgs[i++];
+      var now = new Date();
+      var ts = now.toTimeString().slice(0,8);
+      addBubble({ ts: ts, name: m.name, ch: m.ch, orig: m.orig, tl: m.tl, clean: m.orig });
+      setTimeout(sendNext, 1400 + Math.random() * 800);
+    }
+    sendNext();
+  }, 900);
 });
 </script>
 
@@ -6776,7 +6803,7 @@ const DEFAULT_SETTINGS = {
   tts_channels: ["PUBLIC","PARTY","TEAM","GROUP","WHISPER"],
   ttsReadName: false,
   master_volume: 0.6, master_muted: false,  // 0.6 = 60%
-  show_name: true, show_orig: true, show_tl: false, show_player_id: true, auto_scroll: true, simple_mode: false, simple_nobg: false,
+  show_name: true, show_orig: true, show_tl: false, show_player_id: false, auto_scroll: true, simple_mode: false, simple_nobg: false,
   font_size: 15, name_size: 15, bub_alpha: 10, bub_blur: 5, debug_font: 15, bub_bg_alpha: 85,
   theme_id: "nyann-rose", global_blur: 16, custom_accent: "#F2CAFF", theme_custom: null,
   bg: { url:"https://pbs.twimg.com/media/GI9Tb84awAAmO9t?format=jpg&name=4096x4096", blur:"6", color:"#000000", overlaytype:"solid", opacity:"50",
@@ -10443,11 +10470,11 @@ function addBubble(d) {
       if (!showTl) div.style.display = "none";
       inner.appendChild(div);
     }
+    const _tgtVal = document.getElementById("cfg-tgt")?.value || "en";
     const row = document.createElement("div");
     row.className = "msg-tl";
     row.dataset.tgtLang = _tgtVal;
     if (!showTl) row.style.display = "none";
-    const _tgtVal = document.getElementById("cfg-tgt")?.value || "th";
     const _tgtLabelMap = { "th": "TH", "en": "EN" };
     const flagLbl = document.createElement("span");
     flagLbl.className = "flag";
