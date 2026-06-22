@@ -3418,16 +3418,37 @@ window.electronAPI = new Proxy({}, {
   }
 });
 
-// Stub speechSynthesis to prevent browser permission popup in demo
+// ── DEMO: Stub all APIs that request permissions or hit localhost ──
+
+// 1. Web Speech Synthesis → prevent "access apps/services" permission popup
 window.speechSynthesis = {
-  speak: function() {},
-  cancel: function() {},
+  speak: function() {}, cancel: function() {}, pause: function() {}, resume: function() {},
   getVoices: function() { return []; },
-  onvoiceschanged: null,
-  speaking: false,
-  pending: false,
-  paused: false
+  onvoiceschanged: null, speaking: false, pending: false, paused: false
 };
+window.SpeechSynthesisUtterance = function() { return {}; };
+
+// 2. Web Speech Recognition → prevent microphone permission popup
+window.SpeechRecognition = undefined;
+window.webkitSpeechRecognition = undefined;
+
+// 3. Notifications → prevent notification permission popup
+window.Notification = { permission: 'denied', requestPermission: function() { return Promise.resolve('denied'); } };
+
+// 4. Block all fetch() calls to localhost/127.0.0.1 (VOICEVOX, Bouyomi, server API)
+const _originalFetch = window.fetch;
+window.fetch = function(url) {
+  if (typeof url === 'string' && (url.includes('localhost') || url.includes('127.0.0.1'))) {
+    return Promise.reject(new Error('[DEMO] localhost fetch blocked'));
+  }
+  return _originalFetch.apply(this, arguments);
+};
+
+// 5. Stop VOICEVOX + Bouyomi polling timers before they start
+window.vvCheckStatus    = function() {};
+window.checkBouyomiStatus = function() {};
+window.restartBouyomiPoll = function() {};
+window.vvRestartPoll    = function() {};
 
 // Auto-apply settings-ready so the UI is visible
 document.addEventListener('DOMContentLoaded', function() {
