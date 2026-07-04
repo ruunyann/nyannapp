@@ -4,7 +4,9 @@
 
 ## Web DEMO : [NYANNAPP DEMO](https://ruunyann.online/app) 
 
-## DL Setup : [NYANNAPP-Setup-0.45.1.zip](https://github.com/ruunyann/nyannapp/releases/download/v0.54.1/NYANNAPP-Setup-0.54.1.zip) 
+> ⚠️ DEMO は旧バージョンです。最新の機能は下記の DL Setup からご確認ください。/ The DEMO runs an older version — download the latest build below for current features. / DEMO เป็นเวอร์ชันเก่า กรุณาดาวน์โหลดเวอร์ชันล่าสุดจากลิงก์ด้านล่างเพื่อฟีเจอร์ล่าสุด
+
+## DL Setup : [NYANNAPP-Setup-0.54.1.zip](https://github.com/ruunyann/nyannapp/releases/download/v0.54.1/NYANNAPP-Setup-0.54.1.zip) 
 
 ---
 
@@ -79,6 +81,24 @@ PSO2 NGS がローカルに書き出す ChatLog*.txt
 ### 🎨 テーマ & カラー
 
 プリセットテーマが複数用意されており、さらに **アクセントカラーを自由に変更** することも可能です。
+
+---
+
+## 🧩 対応プラグイン（一例）
+
+`.zip` を追加するだけで導入できる拡張プラグインを多数配布中。以下はその一例です。
+
+| プラグイン | 説明 |
+|-----------|------|
+| **ActionLog Viewer** | PSO2:NGS の ActionLog（アイテム取得・トレード・N-Meseta・倉庫）をリアルタイム表示。タイトルバーから N-Meseta 履歴も確認可能 |
+| **NYANN2FA** | TOTP 認証コードを生成し、タイトルバーに直接表示 |
+| **PSO2 LOG DC** | ライブチャットを Discord Webhook に自動転送。チャンネル種別ごとにフィルタし、色分け Embed で表示 |
+| **TCP Ping 630** | PSO2 NGS サーバーへの接続状態を監視。切断時は「630」エラーとして通知 |
+| **NYANN Debug Console** | アプリ本体とすべてのプラグインの Debug ログを一箇所にまとめて表示 |
+| **NYANN Discord RPC** | アプリの状態を Discord のリッチプレゼンスに反映。表示文言はカスタマイズ可能 |
+| **NYANNP Discord TTS Bot** | Discord ボイスチャンネルで読み上げを行う専用 Bot（別配布・Python 製）。VOICEVOX / edge-tts / gTTS 対応 |
+
+> 上記は一例です。他にも多数のプラグインを配布中で、アプリ内の「DLC / プラグイン」機能から `.zip` を追加するだけで導入できます。
 
 ---
 
@@ -237,6 +257,24 @@ Includes several preset themes, and you can also **customize the accent color fr
 
 ---
 
+## 🧩 Supported Plugins (examples)
+
+A growing library of plugins can be installed simply by adding a `.zip` file. A few examples:
+
+| Plugin | Description |
+|--------|-------------|
+| **ActionLog Viewer** | Real-time view of PSO2:NGS ActionLog data (item pickups, trades, N-Meseta, warehouse), with an N-Meseta history dropdown in the titlebar |
+| **NYANN2FA** | Generates TOTP authenticator codes, shown directly in the titlebar |
+| **PSO2 LOG DC** | Forwards live chat to a Discord webhook, filterable by channel type, with color-coded embeds |
+| **TCP Ping 630** | Monitors the connection to the PSO2 NGS server and flags a "630" error on disconnect |
+| **NYANN Debug Console** | Combines debug logs from the main app and all plugins into a single live view |
+| **NYANN Discord RPC** | Reflects app status in Discord Rich Presence, with a customizable status message |
+| **NYANNP Discord TTS Bot** | A separate, standalone Discord bot (Python) that reads chat aloud in a voice channel, supporting VOICEVOX / edge-tts / gTTS |
+
+> These are just examples — many more plugins are available. Install any of them from the in-app **DLC / Plugins** panel by adding a `.zip` file.
+
+---
+
 ## 🚀 How to Use
 
 ### 1. Set up the log folder
@@ -386,6 +424,24 @@ PSO2 NGS บันทึก ChatLog*.txt ลงในเครื่อง
 ### 🎨 ธีมและสีสัน
 
 มีธีมสำเร็จรูปให้เลือกหลายแบบ และยังสามารถ **กำหนดสี Accent เองได้ตามใจชอบ** อีกด้วย
+
+---
+
+## 🧩 ปลั๊กอินที่รองรับ (ตัวอย่าง)
+
+มีปลั๊กอินให้เลือกใช้เพิ่มเติมอีกมาก แค่เพิ่มไฟล์ `.zip` ก็ติดตั้งได้ทันที ตัวอย่างเช่น
+
+| ปลั๊กอิน | รายละเอียด |
+|---------|-----------|
+| **ActionLog Viewer** | ดู ActionLog ของ PSO2:NGS (ไอเทม/เทรด/N-Meseta/คลัง) แบบเรียลไทม์ พร้อมเมนู N-Meseta แบบ dropdown จาก titlebar |
+| **NYANN2FA** | สร้างรหัส TOTP แสดงผลตรงบน titlebar ของแอป |
+| **PSO2 LOG DC** | ส่งแชท live เข้า Discord Webhook กรองตามประเภทช่องแชทได้ พร้อม embed สี |
+| **TCP Ping 630** | มอนิเตอร์การเชื่อมต่อไปยังเซิร์ฟเวอร์ PSO2 NGS แจ้งเตือนเป็น "630" เมื่อหลุดการเชื่อมต่อ |
+| **NYANN Debug Console** | รวม debug log ของตัวแอปหลักและปลั๊กอินทั้งหมดไว้ที่เดียว แบบ live |
+| **NYANN Discord RPC** | แสดงสถานะของแอปบน Discord Rich Presence กำหนดข้อความเองได้ |
+| **NYANNP Discord TTS Bot** | บอท Discord แยกต่างหาก (เขียนด้วย Python) อ่านแชทออกเสียงในห้องวอยซ์ รองรับ VOICEVOX / edge-tts / gTTS |
+
+> รายการด้านบนเป็นแค่ตัวอย่าง ยังมีปลั๊กอินอื่นให้เลือกใช้อีกมาก ติดตั้งผ่านเมนู "DLC / Plugin" ในแอปได้เลยโดยเพิ่มไฟล์ `.zip`
 
 ---
 
