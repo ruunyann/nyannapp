@@ -4,7 +4,7 @@
 
 ## Web DEMO : [NYANNAPP DEMO](https://ruunyann.online/app) 
 
-## DL Setup : [NYANNAPP-Setup-0.45.1.zip](https://github.com/ruunyann/nyannapp/releases/download/v0.45.1/NYANNAPP-Setup-0.45.1.zip) 
+## DL Setup : [NYANNAPP-Setup-0.45.1.zip](https://github.com/ruunyann/nyannapp/releases/download/v0.54.1/NYANNAPP-Setup-0.54.1.zip) 
 
 ---
 
