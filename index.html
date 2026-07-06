@@ -272,6 +272,7 @@ header::before {
   display: flex; align-items: center;
   padding: 0 14px; gap: 8px;
   border-bottom: 1px solid rgba(124,158,255,0.1);
+  position: relative;
 }
 .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
 .mockup-dot.r { background: #ff5f57; }
@@ -282,6 +283,23 @@ header::before {
   font-family: 'Rajdhani', sans-serif;
   font-size: 13px; font-weight: 700;
   color: var(--blu); letter-spacing: 1px;
+}
+.visitor-counter {
+  position: absolute; right: 14px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; align-items: center; gap: 4px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px; font-weight: 600;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: .3px;
+  user-select: none;
+  pointer-events: none;
+}
+.visitor-counter svg, .visitor-counter .visitor-heart {
+  flex-shrink: 0;
+  font-size: 11px; line-height: 1;
+  letter-spacing: 2px;
+  opacity: 0.65;
 }
 .mockup-body {
   padding: 16px;
@@ -793,6 +811,10 @@ footer {
         <div class="mockup-dot y"></div>
         <div class="mockup-dot g"></div>
         <div class="mockup-title">NYANN!! APP!!</div>
+        <div class="visitor-counter" title="サイト訪問者数">
+          <span id="visitorCount">···</span>
+          <span class="visitor-heart">♡ ♡ ♡</span>
+        </div>
       </div>
       <div class="mockup-body">
         <div class="bubble">
@@ -1333,6 +1355,27 @@ observeWithDelay('.tech-pill');
   step();
   // Re-measure shortly after first paint in case fonts/layout shifted sizing
   setTimeout(resize, 300);
+})();
+
+// Visitor counter (subtle, in fake window titlebar) via CountAPI (free, keyless)
+(function() {
+  const el = document.getElementById('visitorCount');
+  if (!el) return;
+  const KEY = 'nyannapp_ruunyann_site_visits';
+  const BASE = 'https://countapi.mileshilliard.com/api/v1';
+  const alreadyCounted = sessionStorage.getItem('nyannapp_visit_counted');
+  const url = alreadyCounted ? `${BASE}/get/${KEY}` : `${BASE}/hit/${KEY}`;
+  fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      if (data && typeof data.value !== 'undefined') {
+        el.textContent = Number(data.value).toLocaleString();
+        if (!alreadyCounted) sessionStorage.setItem('nyannapp_visit_counted', '1');
+      } else {
+        el.textContent = '—';
+      }
+    })
+    .catch(() => { el.textContent = '—'; });
 })();
 
 // TOP button: show after scrolling, smooth scroll to top on click
