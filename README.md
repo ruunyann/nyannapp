@@ -6,7 +6,7 @@
 
 > ⚠️ DEMO は旧バージョンです。最新の機能は下記の DL Setup からご確認ください。/ The DEMO runs an older version — download the latest build below for current features. / DEMO เป็นเวอร์ชันเก่า กรุณาดาวน์โหลดเวอร์ชันล่าสุดจากลิงก์ด้านล่างเพื่อฟีเจอร์ล่าสุด
 
-## DL Setup : [NYANNAPP-Setup-0.54.1.zip](https://github.com/ruunyann/nyannapp/releases/download/v0.54.1/NYANNAPP-Setup-0.54.1.zip) 
+## DL Setup : [NYANNAPP-Setup-0.58.8.zip](https://github.com/ruunyann/nyannapp/releases/download/v0.58.8/NYANNAPP-Setup-0.58.8.zip) 
 
 ---
 
