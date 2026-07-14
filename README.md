@@ -2,7 +2,7 @@
 
 > PSO2: New Genesis Live Chat Viewer
 
-## Web DEMO : [NYANNAPP DEMO](https://app.ruunyann.online) 
+## Web DEMO : [NYANNAPP DEMO](https://ruunyann.online/app) 
 
 > ⚠️ DEMO は旧バージョンです。最新の機能は下記の DL Setup からご確認ください。/ The DEMO runs an older version — download the latest build below for current features. / DEMO เป็นเวอร์ชันเก่า กรุณาดาวน์โหลดเวอร์ชันล่าสุดจากลิงก์ด้านล่างเพื่อฟีเจอร์ล่าสุด
 
