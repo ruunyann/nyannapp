@@ -3,25 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NYANNAPP Project</title>
-<meta name="description" content="⊹ NYANNAPP ⊹ PSO2:NGSライブチャットTTS・翻訳・プラグイン管理ツール">
+<title>NYANNAPP Project｜PSO2:NGS チャットログ翻訳・TTS読み上げツール</title>
+<meta name="description" content="PSO2:NGS のチャットログ（ChatLog*.txt）をリアルタイムで読み取り、表示・翻訳（6エンジン対応）・TTS読み上げを行うローカル動作のデスクトップアプリ。ゲームのメモリやプロセスには触れず、公式ログファイルのみを読み取ります。">
+<link rel="canonical" href="https://app.ii-nya.com/">
 
 <!-- =====  ===== -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://ruunyann.online/app/">
+<meta property="og:url" content="https://app.ii-nya.com/">
 <meta property="og:site_name" content="NYANNAPP Project">
-<meta property="og:title" content="NYANNAPP Project">
-<meta property="og:description" content="⊹ NYANNAPP ⊹ PSO2:NGSライブチャットTTS・翻訳・プラグイン管理ツール">
-<meta property="og:image" content="https://ruunyann.online/app/image/pw.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="NYANNAPP Project｜PSO2:NGS チャットログ翻訳・TTS読み上げツール">
+<meta property="og:description" content="PSO2:NGS のチャットログ（ChatLog*.txt）をリアルタイムで読み取り、表示・翻訳（6エンジン対応）・TTS読み上げを行うローカル動作のデスクトップアプリ。ゲームのメモリやプロセスには触れず、公式ログファイルのみを読み取ります。">
+<meta property="og:image" content="https://app.ii-nya.com/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NYANN!! APP!! — PSO2:NGS チャットログ表示・翻訳・TTS">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://ruunyann.online/app/">
-<meta name="twitter:title" content="NYANNAPP Project">
-<meta name="twitter:description" content="⊹ NYANNAPP ⊹ PSO2:NGSライブチャットTTS・翻訳・プラグイン管理ツール">
-<meta name="twitter:image" content="https://ruunyann.online/app/image/pw.png">
+<meta name="twitter:url" content="https://app.ii-nya.com/">
+<meta name="twitter:title" content="NYANNAPP Project｜PSO2:NGS チャットログ翻訳・TTS読み上げツール">
+<meta name="twitter:description" content="PSO2:NGS のチャットログ（ChatLog*.txt）をリアルタイムで読み取り、表示・翻訳（6エンジン対応）・TTS読み上げを行うローカル動作のデスクトップアプリ。ゲームのメモリやプロセスには触れず、公式ログファイルのみを読み取ります。">
+<meta name="twitter:image" content="https://app.ii-nya.com/ogp.png">
+<link rel="image_src" href="https://app.ii-nya.com/ogp.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "NYANNAPP Project",
+  "alternateName": ["NYANN!! APP!!", "NYANNAPP"],
+  "url": "https://app.ii-nya.com/",
+  "image": "https://app.ii-nya.com/ogp.png",
+  "inLanguage": "ja",
+  "description": "PSO2:NGS のチャットログ（ChatLog*.txt）をリアルタイムで読み取り、表示・翻訳（6エンジン対応）・TTS読み上げを行うローカル動作のデスクトップアプリ。ゲームのメモリやプロセスには触れず、公式ログファイルのみを読み取ります。",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Windows",
+  "downloadUrl": "https://github.com/ruunyann/nyannapp/releases/download/v0.58.8/NYANNAPP-Setup-0.58.8.zip",
+  "softwareVersion": "0.58.8",
+  "isAccessibleForFree": true,
+  "author": { "@type": "Person", "name": "ruunyann", "url": "https://github.com/ruunyann" }
+}
+</script>
 <!-- =====  ===== -->
-<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" sizes="192x192" href="https://app.ii-nya.com/favicon.png">
+<link rel="apple-touch-icon" href="https://app.ii-nya.com/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;700&family=Share+Tech+Mono&family=Noto+Sans+Thai:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
 :root {
@@ -68,7 +93,7 @@ body {
 html, body {
   cursor: url('data:image/png;base64,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') 4 2, auto;
 }
-a, button, .btn-dl, .btn-demo, .btn-gh, .tl-chip, .tech-pill, [onclick] {
+a, button, .lang-btn, .btn-dl, .btn-demo, .btn-gh, .btn-newver, .tl-chip, .tech-pill, [onclick] {
   cursor: url('data:image/png;base64,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') 4 2, pointer;
 }
 
@@ -449,6 +474,55 @@ header::before {
   box-shadow: 0 0 28px rgba(0,255,163,0.3);
   transform: translateY(-2px);
 }
+.btn-newver {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 22px;
+  border: 1px solid rgba(88,101,242,0.6);
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px; font-weight: 700;
+  letter-spacing: .3px;
+  border-radius: 8px;
+  text-decoration: none;
+  background: #5865F2;
+  transition: all .2s;
+  box-shadow: 0 0 20px rgba(88,101,242,0.45);
+}
+.btn-newver:hover {
+  background: #6d79ff;
+  box-shadow: 0 0 36px rgba(88,101,242,0.75);
+  transform: translateY(-2px);
+}
+.new-badge {
+  position: absolute; top: -10px; right: -10px;
+  background: var(--acc); color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px; font-weight: 800;
+  letter-spacing: .5px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(255,90,150,0.6);
+  transform: rotate(6deg);
+  pointer-events: none;
+}
+.lang-sw {
+  position: fixed; z-index: 1000;
+  top: calc(14px + env(safe-area-inset-top, 0px)); right: 16px; max-width: calc(100vw - 32px);
+  display: flex; gap: 6px; padding: 6px;
+  background: rgba(4,22,40,0.82); backdrop-filter: blur(8px);
+  border: 1px solid var(--sep); border-radius: 999px;
+}
+.lang-btn {
+  font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: .5px;
+  min-width: 52px; padding: 8px 16px; border-radius: 999px; border: 0;
+  background: transparent; color: var(--mute); transition: all .2s;
+}
+.lang-btn:hover { color: #fff; }
+@media (max-width: 420px) { .lang-btn { min-width: 0; padding: 7px 11px; font-size: 15px; } .lang-sw { gap: 3px; padding: 5px; } }
+.lang-btn.active { background: var(--blu); color: #000; }
+html[lang="th"] body { font-family: 'Noto Sans Thai','Noto Sans JP',sans-serif; }
+html[lang="zh-TW"] body { font-family: 'Noto Sans TC','Noto Sans JP',sans-serif; }
+html[lang="zh-CN"] body { font-family: 'Noto Sans SC','Noto Sans JP',sans-serif; }
 .dl-wrap { position: relative; display: inline-flex; }
 .beta-badge {
   position: absolute; top: -10px; right: -10px;
@@ -849,6 +923,13 @@ footer {
   <div class="stars-near"></div>
   <div class="vignette"></div>
 </div>
+<nav class="lang-sw" aria-label="Language">
+  <button class="lang-btn" data-lang="ja">JA</button>
+  <button class="lang-btn" data-lang="th">TH</button>
+  <button class="lang-btn" data-lang="en">EN</button>
+  <button class="lang-btn" data-lang="tw">TW</button>
+  <button class="lang-btn" data-lang="cn">CN</button>
+</nav>
 <div class="wrapper">
 
 <!-- ══ HERO ══ -->
@@ -932,12 +1013,18 @@ footer {
       </a>
       <span class="old-badge">旧Ver</span>
     </div>
+    <div class="dl-wrap">
+      <a href="https://discord.com/invite/PGJUyhwvky" class="btn-newver" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="currentColor" aria-hidden="true"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg> New Ver. &amp; Plugin
+      </a>
+      <span class="new-badge">NEW</span>
+    </div>
     <a href="https://github.com/ruunyann/nyannapp" class="btn-gh">
       ★ GitHub
     </a>
   </div>
   <p style="margin-top:14px;font-size:11px;color:var(--mute);">
-    ※ DEMO は旧バージョンです。最新の機能・UI は上の「ダウンロード」からご確認ください。
+    ※ DEMO は旧バージョンです。最新の機能・UI は上の「ダウンロード」からご確認ください。<br>※ 最新バージョン（New Ver.）と Plugin の情報は「New Ver. &amp; Plugin」ボタンから Discord サーバーへどうぞ。
   </p>
 </header>
 
@@ -1302,10 +1389,10 @@ footer {
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-logo">NYANN!! APP!!</div>
-  <div style="font-size:12px;color:var(--mute);margin-top:4px;">
-    NYANNAPP!! Project!! — v0.53.6
+  <div data-nosnippet style="font-size:12px;color:var(--mute);margin-top:4px;">
+    NYANNAPP!! Project!! — v0.58.8
   </div>
-  <div class="footer-disc">
+  <div class="footer-disc" data-nosnippet>
     本アプリは非公式のファンメイドツールです。SEGA および PSO2: NGS とは一切関係ありません。
   </div>
   <div class="footer-credits">
@@ -1380,6 +1467,136 @@ observeWithDelay('.tech-pill');
   topBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+})();
+</script>
+<script>
+(function(){
+// [th, en, zh-TW, zh-CN]
+const D={
+'PSO2: NGS のチャットログを<strong>リアルタイム</strong>で読み取り、<br>表示・翻訳・TTS 読み上げを行う<strong>ローカル動作</strong>のデスクトップアプリ':[
+ 'อ่านแชทล็อกของ PSO2: NGS แบบ<strong>เรียลไทม์</strong><br>แสดงผล แปล และอ่านออกเสียง (TTS) ด้วยแอปเดสก์ท็อปที่<strong>ทำงานในเครื่อง</strong>',
+ 'Reads PSO2: NGS chat logs in <strong>real time</strong><br>to display, translate and read them aloud (TTS) — a <strong>local</strong> desktop app',
+ '<strong>即時</strong>讀取 PSO2: NGS 聊天記錄，<br>進行顯示、翻譯與 TTS 語音朗讀的<strong>本機運作</strong>桌面應用程式',
+ '<strong>实时</strong>读取 PSO2: NGS 聊天日志，<br>进行显示、翻译与 TTS 语音朗读的<strong>本地运行</strong>桌面应用'],
+'⬇ ダウンロード':['⬇ ดาวน์โหลด','⬇ Download','⬇ 下載','⬇ 下载'],
+'旧Ver':['เวอร์ชันเก่า','Old Ver','舊版','旧版'],
+'※ DEMO は旧バージョンです。最新の機能・UI は上の「ダウンロード」からご確認ください。':[
+ '※ DEMO เป็นเวอร์ชันเก่า ดูฟีเจอร์และ UI ล่าสุดได้จากปุ่ม "ดาวน์โหลด" ด้านบน',
+ '※ The DEMO is an older version. See the latest features and UI via "Download" above.',
+ '※ DEMO 為舊版本。最新功能與介面請從上方「下載」確認。',
+ '※ DEMO 为旧版本。最新功能与界面请从上方“下载”确认。'],
+'※ 最新バージョン（New Ver.）と Plugin の情報は「New Ver. & Plugin」ボタンから Discord サーバーへどうぞ。':[
+ '※ ข้อมูลเวอร์ชันล่าสุด (New Ver.) และ Plugin ดูได้ที่ Discord Server ผ่านปุ่ม "New Ver. & Plugin"',
+ '※ For the latest version (New Ver.) and plugins, join our Discord server via the "New Ver. & Plugin" button.',
+ '※ 最新版本（New Ver.）與 Plugin 資訊請點「New Ver. & Plugin」按鈕前往 Discord 伺服器。',
+ '※ 最新版本（New Ver.）与 Plugin 信息请点击“New Ver. & Plugin”按钮前往 Discord 服务器。'],
+'仕組みはシンプル':['กลไกเรียบง่าย','Simple by design','運作原理很簡單','运作原理很简单'],
+'ゲームのメモリには一切触れず、公式ログファイルだけを読む安全な設計。':[
+ 'ไม่แตะต้องหน่วยความจำของเกมเลย อ่านเฉพาะไฟล์ล็อกทางการอย่างปลอดภัย',
+ 'Never touches game memory — it only reads the official log files, by design.',
+ '完全不接觸遊戲記憶體，只讀取官方記錄檔的安全設計。',
+ '完全不接触游戏内存，只读取官方日志文件的安全设计。'],
+'PSO2 NGS<br>自動生成するログファイルを監視':['PSO2 NGS<br>เฝ้าดูไฟล์ล็อกที่สร้างอัตโนมัติ','PSO2 NGS<br>Watches the auto-generated log file','PSO2 NGS<br>監控自動產生的記錄檔','PSO2 NGS<br>监控自动生成的日志文件'],
+'Node.js<br>新着行をリアルタイム検知':['Node.js<br>ตรวจจับบรรทัดใหม่แบบเรียลไทม์','Node.js<br>Detects new lines in real time','Node.js<br>即時偵測新增行','Node.js<br>实时检测新增行'],
+'localhost<br>経由で UI に即座に送信':['ส่งไปยัง UI ทันที<br>ผ่าน localhost','Sent instantly to the UI<br>via localhost','經由 localhost<br>即時傳送至 UI','经由 localhost<br>即时发送至 UI'],
+'表示 / TTS / 翻訳':['แสดง / TTS / แปล','Display / TTS / Translate','顯示 / TTS / 翻譯','显示 / TTS / 翻译'],
+'フィルタリング<br>表示 → 読み上げ・翻訳':['กรองข้อความ<br>แสดง → อ่านออกเสียง・แปล','Filtering<br>Display → read aloud / translate','篩選<br>顯示 → 朗讀・翻譯','筛选<br>显示 → 朗读・翻译'],
+'主な機能':['ฟีเจอร์หลัก','Key Features','主要功能','主要功能'],
+'チャットをもっと快適に。見やすく、聞きやすく、わかりやすく。':['แชทสะดวกขึ้น อ่านง่าย ฟังง่าย เข้าใจง่าย','Make chat more comfortable — easier to read, hear and understand.','讓聊天更舒適。更易讀、更易聽、更易懂。','让聊天更舒适。更易读、更易听、更易懂。'],
+'リアルタイム表示':['แสดงผลเรียลไทม์','Real-time Display','即時顯示','实时显示'],
+'ゲームが書き出す ChatLog*.txt を監視し、新着メッセージのみ即座に表示します。':['เฝ้าดู ChatLog*.txt ที่เกมสร้างขึ้น และแสดงเฉพาะข้อความใหม่ทันที','Watches the ChatLog*.txt the game writes and instantly shows only new messages.','監控遊戲輸出的 ChatLog*.txt，只即時顯示新訊息。','监控游戏输出的 ChatLog*.txt，只即时显示新消息。'],
+'チャンネルフィルター':['ตัวกรองแชนแนล','Channel Filter','頻道篩選','频道筛选'],
+'PARTY / WHISPER / PUBLIC / TEAM / GUILD を個別に ON/OFF。見たいチャンネルだけ表示。':['เปิด/ปิด PARTY / WHISPER / PUBLIC / TEAM / GUILD แยกกัน แสดงเฉพาะแชนแนลที่ต้องการ','Toggle PARTY / WHISPER / PUBLIC / TEAM / GUILD individually and show only what you want.','PARTY / WHISPER / PUBLIC / TEAM / GUILD 可個別開關，只顯示想看的頻道。','PARTY / WHISPER / PUBLIC / TEAM / GUILD 可单独开关，只显示想看的频道。'],
+'翻訳機能':['ระบบแปลภาษา','Translation','翻譯功能','翻译功能'],
+'6種類の翻訳エンジンに対応。Google / MyMemory は無料・キー不要で即使用可能。':['รองรับเอนจินแปล 6 แบบ Google / MyMemory ใช้ฟรีไม่ต้องใช้คีย์','6 translation engines supported. Google / MyMemory are free and need no key.','支援 6 種翻譯引擎。Google / MyMemory 免費且無需金鑰即可使用。','支持 6 种翻译引擎。Google / MyMemory 免费且无需密钥即可使用。'],
+'TTS 読み上げ':['อ่านออกเสียง TTS','TTS Read-aloud','TTS 語音朗讀','TTS 语音朗读'],
+'VOICEVOX / 棒読みちゃん / Web Speech API の 3 エンジンに対応。':['รองรับ 3 เอนจิน: VOICEVOX / Bouyomi-chan / Web Speech API','Supports 3 engines: VOICEVOX / Bouyomi-chan / Web Speech API.','支援 VOICEVOX / 棒讀醬 / Web Speech API 三種引擎。','支持 VOICEVOX / 棒读酱 / Web Speech API 三种引擎。'],
+'スパム・ブロック':['บล็อกสแปม','Spam Block','垃圾訊息封鎖','垃圾消息屏蔽'],
+'重複メッセージ・Flood 検知の自動スキップ。Regex フィルターで細かく制御可能。':['ข้ามข้อความซ้ำและการ Flood อัตโนมัติ ควบคุมละเอียดด้วย Regex','Auto-skips duplicates and floods. Fine-tune with Regex filters.','自動略過重複訊息與洗頻，並可用 Regex 篩選器細部控制。','自动跳过重复消息与刷屏，并可用 Regex 筛选器精细控制。'],
+'テーマ & カスタマイズ':['ธีมและการปรับแต่ง','Themes & Customization','主題與自訂','主题与自定义'],
+'8 種類のプリセットテーマ＋カスタムカラー。背景画像（URL / ローカル）にも対応。':['ธีมสำเร็จรูป 8 แบบ + สีกำหนดเอง รองรับภาพพื้นหลัง (URL / ในเครื่อง)','8 preset themes + custom colors. Background images (URL / local) supported.','8 種預設主題＋自訂顏色，也支援背景圖片（URL / 本機）。','8 种预设主题＋自定义颜色，也支持背景图片（URL / 本地）。'],
+'ブックマーク & ブロックリスト':['บุ๊กมาร์กและบล็อกลิสต์','Bookmarks & Block List','書籤與封鎖名單','书签与屏蔽名单'],
+'気になったメッセージを保存。特定プレイヤーのメッセージを永続的に非表示。':['บันทึกข้อความที่สนใจ และซ่อนข้อความของผู้เล่นที่ระบุถาวร','Save messages you like and permanently hide specific players.','儲存在意的訊息，並永久隱藏特定玩家的訊息。','保存在意的消息，并永久隐藏特定玩家的消息。'],
+'自動アップデート':['อัปเดตอัตโนมัติ','Auto Update','自動更新','自动更新'],
+'起動時 + 30 分ごとに GitHub Releases を確認。インストールタイミングはユーザーが決定。':['ตรวจสอบ GitHub Releases ตอนเปิดแอปและทุก 30 นาที คุณเลือกเวลาติดตั้งเอง','Checks GitHub Releases at launch and every 30 min. You choose when to install.','啟動時及每 30 分鐘檢查 GitHub Releases，安裝時機由使用者決定。','启动时及每 30 分钟检查 GitHub Releases，安装时机由用户决定。'],
+'完全ローカル動作':['ทำงานในเครื่องทั้งหมด','Fully Local','完全本機運作','完全本地运行'],
+'ユーザーデータは一切収集・送信しません。すべて %APPDATA%\\NYANNAPP\\ にローカル保存。':['ไม่เก็บหรือส่งข้อมูลผู้ใช้ใดๆ ทุกอย่างบันทึกในเครื่องที่ %APPDATA%\\NYANNAPP\\','No user data is collected or sent. Everything is stored locally in %APPDATA%\\NYANNAPP\\.','不會收集或傳送任何使用者資料，全部儲存於本機 %APPDATA%\\NYANNAPP\\。','不会收集或发送任何用户数据，全部保存在本地 %APPDATA%\\NYANNAPP\\。'],
+'DLC / プラグイン':['DLC / ปลั๊กอิน','DLC / Plugins','DLC / 外掛','DLC / 插件'],
+'.zip ファイルからプラグインをインストール・管理。プラグイン UI をアプリ内に直接埋め込み表示。自動起動 ON/OFF も設定可能。':['ติดตั้งและจัดการปลั๊กอินจากไฟล์ .zip แสดง UI ของปลั๊กอินในแอปโดยตรง ตั้งค่าเปิด/ปิดเริ่มอัตโนมัติได้','Install and manage plugins from .zip files. Plugin UIs embed right in the app, with auto-start ON/OFF.','可由 .zip 檔安裝並管理外掛，外掛介面直接嵌入應用程式內，也可設定自動啟動開關。','可由 .zip 文件安装并管理插件，插件界面直接嵌入应用内，也可设置自动启动开关。'],
+'チャット履歴':['ประวัติแชท','Chat History','聊天記錄','聊天记录'],
+'起動時に過去 N 時間分のログを自動読み込み。NGS / Classic 両対応。次回から同じ設定を記憶するオプション付き。':['โหลดล็อกย้อนหลัง N ชั่วโมงอัตโนมัติเมื่อเปิดแอป รองรับทั้ง NGS / Classic และจำการตั้งค่าไว้ได้','Auto-loads the past N hours of logs at launch. NGS / Classic supported, with an option to remember settings.','啟動時自動載入過去 N 小時的記錄，支援 NGS / Classic，並可記住設定。','启动时自动载入过去 N 小时的日志，支持 NGS / Classic，并可记住设置。'],
+'VOICEVOX キャッシュ & 単語置換':['แคช VOICEVOX และการแทนที่คำ','VOICEVOX Cache & Word Replace','VOICEVOX 快取與單字取代','VOICEVOX 缓存与单词替换'],
+'音声をローカルキャッシュして高速再生。読み上げ前のテキスト置換ルールを自由設定（棒読みちゃん辞書内蔵）。':['แคชเสียงในเครื่องเพื่อเล่นเร็ว ตั้งกฎแทนที่ข้อความก่อนอ่านได้อิสระ (มีพจนานุกรม Bouyomi-chan ในตัว)','Caches audio locally for fast playback. Set text-replacement rules before reading (Bouyomi-chan dictionary built in).','語音本機快取以加速播放，朗讀前可自由設定文字取代規則（內建棒讀醬字典）。','语音本地缓存以加速播放，朗读前可自由设置文字替换规则（内置棒读酱词典）。'],
+'翻訳テキストの色分け':['แยกสีข้อความแปล','Translation Text Colors','翻譯文字配色','翻译文字配色'],
+'翻訳結果の表示色を「言語別」または「チャット（プレイヤー・チャンネル）別」に自由設定可能。設定は即時反映されます。':['ตั้งสีผลแปลได้ตาม "ภาษา" หรือ "แชท (ผู้เล่น・แชนแนล)" มีผลทันที','Color translations by language or by chat (player / channel). Changes apply instantly.','翻譯結果可依「語言」或「聊天（玩家・頻道）」自由設定顏色，設定即時生效。','翻译结果可按“语言”或“聊天（玩家・频道）”自由设置颜色，设置即时生效。'],
+'アプリ内ブラウザウィンドウ。外部ページをアプリのテーマに合わせて表示できます。UI は日本語 / English に対応。':['หน้าต่างเบราว์เซอร์ในแอป แสดงหน้าเว็บภายนอกให้เข้ากับธีมของแอป UI รองรับภาษาญี่ปุ่น / English','In-app browser window that shows external pages matched to the app theme. UI in Japanese / English.','應用程式內建瀏覽器視窗，可依應用程式主題顯示外部網頁。介面支援日文 / English。','应用内置浏览器窗口，可按应用主题显示外部网页。界面支持日文 / English。'],
+'カスタムアプリアイコン':['ไอคอนแอปกำหนดเอง','Custom App Icon','自訂應用程式圖示','自定义应用图标'],
+'好きな画像をアプリウィンドウのアイコンに設定可能。自分だけのオリジナル外観に。':['ตั้งรูปที่ชอบเป็นไอคอนหน้าต่างแอป สร้างลุคเฉพาะตัวของคุณ','Use any image as the app window icon for your own look.','可將喜歡的圖片設為視窗圖示，打造專屬外觀。','可将喜欢的图片设为窗口图标，打造专属外观。'],
+'対応プラグインも多数':['ปลั๊กอินรองรับมากมาย','Plenty of Plugins','支援多種外掛','支持多种插件'],
+'.zip を入れるだけで導入できる拡張プラグインを多数配布中。ここでは一例をご紹介。':['มีปลั๊กอินเสริมแจกมากมาย แค่ใส่ไฟล์ .zip ก็ใช้งานได้ ต่อไปนี้เป็นตัวอย่าง','Many extension plugins are available — just drop in a .zip. Here are a few examples.','提供多種擴充外掛，只要放入 .zip 即可導入。以下為部分範例。','提供多种扩展插件，只要放入 .zip 即可导入。以下为部分示例。'],
+'PSO2:NGS の ActionLog（アイテム取得・トレード・N-Meseta・倉庫）をリアルタイム表示。タイトルバーから N-Meseta 履歴もドロップダウンで確認可能。':['แสดง ActionLog ของ PSO2:NGS (ได้รับไอเทม・เทรด・N-Meseta・คลัง) แบบเรียลไทม์ ดูประวัติ N-Meseta จากดรอปดาวน์บนแถบชื่อเรื่องได้','Shows PSO2:NGS ActionLog (items, trades, N-Meseta, storage) in real time. N-Meseta history is in a title-bar dropdown.','即時顯示 PSO2:NGS 的 ActionLog（取得道具・交易・N-Meseta・倉庫），也可從標題列下拉選單查看 N-Meseta 記錄。','实时显示 PSO2:NGS 的 ActionLog（获得道具・交易・N-Meseta・仓库），也可从标题栏下拉菜单查看 N-Meseta 记录。'],
+'TOTP 認証コード生成プラグイン。ワンタイムパスコードをタイトルバーに直接表示し、他アプリに切り替えずにコピーできます。':['ปลั๊กอินสร้างรหัสยืนยัน TOTP แสดงรหัสครั้งเดียวบนแถบชื่อเรื่อง คัดลอกได้โดยไม่ต้องสลับแอป','TOTP code generator plugin. Shows one-time codes in the title bar so you can copy without switching apps.','TOTP 驗證碼產生外掛。一次性密碼直接顯示於標題列，不必切換應用程式即可複製。','TOTP 验证码生成插件。一次性密码直接显示在标题栏，无需切换应用即可复制。'],
+'ライブチャットを Discord Webhook に自動転送。チャンネル種別（PUBLIC / PARTY / WHISPER など）ごとにフィルタし、色分け Embed で見やすく表示。':['ส่งต่อแชทสดไปยัง Discord Webhook อัตโนมัติ กรองตามประเภทแชนแนล (PUBLIC / PARTY / WHISPER ฯลฯ) แสดงเป็น Embed แยกสีอ่านง่าย','Auto-forwards live chat to a Discord Webhook, filtered by channel type (PUBLIC / PARTY / WHISPER…) in color-coded embeds.','自動將即時聊天轉發至 Discord Webhook，依頻道類型（PUBLIC / PARTY / WHISPER 等）篩選，以彩色 Embed 呈現。','自动将实时聊天转发至 Discord Webhook，按频道类型（PUBLIC / PARTY / WHISPER 等）筛选，以彩色 Embed 呈现。'],
+'PSO2 NGS サーバーへの接続状態を常時監視。TCP Ping をリアルタイム表示し、切断時は「630」エラーとしてすぐ気づけます。':['เฝ้าดูสถานะเชื่อมต่อเซิร์ฟเวอร์ PSO2 NGS ตลอดเวลา แสดง TCP Ping แบบเรียลไทม์ และแจ้งเตือนทันทีเมื่อหลุดเป็นข้อผิดพลาด "630"','Constantly monitors your connection to PSO2 NGS servers. Shows TCP Ping live and flags a drop as error "630" immediately.','持續監控與 PSO2 NGS 伺服器的連線狀態，即時顯示 TCP Ping，斷線時以「630」錯誤立刻提醒。','持续监控与 PSO2 NGS 服务器的连接状态，实时显示 TCP Ping，断线时以“630”错误立刻提醒。'],
+'アプリ本体（main process）とすべてのプラグイン（renderer）の Debug ログを一箇所にまとめてライブ表示。トラブルシューティング用。':['รวมล็อก Debug ของแอปหลัก (main process) และปลั๊กอินทั้งหมด (renderer) แสดงสดในที่เดียว สำหรับแก้ปัญหา','Gathers debug logs from the app (main process) and all plugins (renderer) into one live view. For troubleshooting.','將主程式（main process）與所有外掛（renderer）的 Debug 記錄集中即時顯示，用於疑難排解。','将主程序（main process）与所有插件（renderer）的 Debug 日志集中实时显示，用于故障排查。'],
+'アプリの状態を Discord のリッチプレゼンスに反映。表示するステータス文言は自由にカスタマイズできます。':['แสดงสถานะแอปใน Discord Rich Presence ปรับข้อความสถานะได้อิสระ','Reflects the app\'s state in your Discord Rich Presence. The status text is fully customizable.','將應用程式狀態反映到 Discord 動態狀態（Rich Presence），顯示文字可自由自訂。','将应用状态反映到 Discord 动态状态（Rich Presence），显示文字可自由自定义。'],
+'Discord ボイスチャンネルで読み上げを行う専用 Bot（別配布・Python 製）。VOICEVOX / edge-tts / gTTS に対応し、サーバーごとに読み上げ設定を保存できます。':['บอทเฉพาะสำหรับอ่านออกเสียงในห้องเสียง Discord (แจกแยก・เขียนด้วย Python) รองรับ VOICEVOX / edge-tts / gTTS และบันทึกการตั้งค่าแยกตามเซิร์ฟเวอร์','A dedicated bot that reads aloud in Discord voice channels (distributed separately, Python). Supports VOICEVOX / edge-tts / gTTS with per-server settings.','在 Discord 語音頻道朗讀的專用 Bot（另行發布・Python 製）。支援 VOICEVOX / edge-tts / gTTS，可依伺服器儲存朗讀設定。','在 Discord 语音频道朗读的专用 Bot（另行发布・Python 制）。支持 VOICEVOX / edge-tts / gTTS，可按服务器保存朗读设置。'],
+'チャンネルごとに名前色・吹き出し背景色を自由設定。アルファ値まで指定できるカスタムカラーピッカーと、Bubble 不透明度 / Blur スライダーも搭載。テキスト色や翻訳文の配色まで細かくカスタマイズできます。':['ตั้งสีชื่อและสีพื้นหลังบับเบิลแยกตามแชนแนล มีตัวเลือกสีกำหนดเอง (รวมค่าอัลฟา) พร้อมสไลเดอร์ความทึบ/Blur ปรับสีข้อความและสีคำแปลได้ละเอียด','Set name and bubble background colors per channel. Custom color picker with alpha, plus Bubble opacity / Blur sliders. Even text and translation colors are customizable.','可依頻道自由設定名稱色與氣泡背景色。附含 Alpha 值的自訂色彩選擇器與 Bubble 不透明度 / Blur 滑桿，連文字色與翻譯文配色都能細部調整。','可按频道自由设置名称色与气泡背景色。附带含 Alpha 值的自定义取色器与 Bubble 不透明度 / Blur 滑块，连文字色与译文配色都能精细调整。'],
+'チャンネルごと・プレイヤーごとにチャット通知音を再生。通知音は自由に選択・変更できます。':['เล่นเสียงแจ้งเตือนแชทแยกตามแชนแนลและผู้เล่น เลือกและเปลี่ยนเสียงได้อิสระ','Plays chat alert sounds per channel and per player. Sounds can be freely chosen and changed.','可依頻道、依玩家播放聊天提示音，提示音可自由選擇與更換。','可按频道、按玩家播放聊天提示音，提示音可自由选择与更换。'],
+'タイトルバーのクイックアクセスパネルから .exe / .lnk / .bat / .ahk / .url を素早く起動。よく使うツールをワンクリックで呼び出せます。':['เปิด .exe / .lnk / .bat / .ahk / .url ได้เร็วจากแผงเข้าถึงด่วนบนแถบชื่อเรื่อง เรียกเครื่องมือที่ใช้บ่อยด้วยคลิกเดียว','Quickly launch .exe / .lnk / .bat / .ahk / .url from the title-bar quick-access panel. Open favorite tools in one click.','從標題列快速存取面板迅速啟動 .exe / .lnk / .bat / .ahk / .url，常用工具一鍵呼叫。','从标题栏快速访问面板迅速启动 .exe / .lnk / .bat / .ahk / .url，常用工具一键调用。'],
+'カスタム CSS テーマをインポートしてアプリ UI 全体（インラインスタイル含め）を丸ごと着せ替え。他プラグインのパネルやポップアップにも自動適用され、個別設定は不要。ピクセル風テーマを標準搭載。':['นำเข้าธีม CSS แบบกำหนดเองเพื่อเปลี่ยนโฉม UI ทั้งแอป (รวมอินไลน์สไตล์) ใช้กับแผงและป๊อปอัปของปลั๊กอินอื่นอัตโนมัติ ไม่ต้องตั้งค่าแยก มีธีมสไตล์พิกเซลในตัว','Import custom CSS themes to reskin the entire app UI (inline styles included). Auto-applies to other plugins\' panels and popups. A pixel-style theme is built in.','匯入自訂 CSS 主題，整個應用程式介面（含行內樣式）全面換裝，並自動套用至其他外掛的面板與彈出視窗，無需個別設定。內建像素風主題。','导入自定义 CSS 主题，整个应用界面（含内联样式）全面换装，并自动应用于其他插件的面板与弹窗，无需单独设置。内置像素风主题。'],
+'ここに挙げたのは一例です。他にも多数のプラグインを配布中で、アプリ内の「DLC / プラグイン」機能から .zip を追加するだけで導入できます。':['นี่เป็นเพียงตัวอย่าง ยังมีปลั๊กอินแจกอีกมาก เพียงเพิ่มไฟล์ .zip จากฟีเจอร์ "DLC / ปลั๊กอิน" ในแอป','These are just examples. Many more plugins are available — add the .zip from the app\'s "DLC / Plugins" feature.','此處僅為部分範例。還有多種外掛可供下載，只要在應用程式的「DLC / 外掛」功能中加入 .zip 即可。','此处仅为部分示例。还有多种插件可供下载，只要在应用的“DLC / 插件”功能中添加 .zip 即可。'],
+'対応 TTS エンジン':['เอนจิน TTS ที่รองรับ','Supported TTS Engines','支援的 TTS 引擎','支持的 TTS 引擎'],
+'用途や環境に合わせて 3 種類から選択できます。':['เลือกได้ 3 แบบตามการใช้งานและสภาพแวดล้อม','Choose from 3 engines to fit your needs and setup.','可依用途與環境從 3 種引擎中選擇。','可按用途与环境从 3 种引擎中选择。'],
+'高品質な日本語 TTS エンジン。話者・スタイル・ピッチ・イントネーションを細かく調整可能。音声キャッシュで高速再生。':['เอนจิน TTS ภาษาญี่ปุ่นคุณภาพสูง ปรับผู้พูด สไตล์ พิตช์ และอินโทเนชันได้ละเอียด เล่นเร็วด้วยแคชเสียง','High-quality Japanese TTS engine. Fine-tune speaker, style, pitch and intonation. Voice cache for fast playback.','高品質日語 TTS 引擎，可細部調整說話者、風格、音高與語調，語音快取讓播放更快。','高品质日语 TTS 引擎，可精细调整说话人、风格、音高与语调，语音缓存让播放更快。'],
+'定番の読み上げソフト。既存のユーザー辞書・設定を活かしてそのまま使用できます。':['ซอฟต์แวร์อ่านออกเสียงยอดนิยม ใช้พจนานุกรมและการตั้งค่าเดิมต่อได้ทันที','The classic read-aloud software. Keep using your existing user dictionary and settings.','經典的朗讀軟體，可直接沿用既有的使用者字典與設定。','经典的朗读软件，可直接沿用现有的用户词典与设置。'],
+'追加インストール不要。OS 標準の音声エンジンをすぐに使えます。':['ไม่ต้องติดตั้งเพิ่ม ใช้เอนจินเสียงมาตรฐานของ OS ได้ทันที','No extra install. Use your OS\'s built-in speech engine right away.','無需額外安裝，立即使用作業系統內建語音引擎。','无需额外安装，立即使用操作系统内置语音引擎。'],
+'推奨':['แนะนำ','Recommended','推薦','推荐'],
+'互換性◎':['เข้ากันได้ดี◎','Great compatibility','相容性◎','兼容性◎'],
+'インストール不要':['ไม่ต้องติดตั้ง','No install needed','免安裝','免安装'],
+'対応翻訳エンジン':['เอนจินแปลที่รองรับ','Supported Translation Engines','支援的翻譯引擎','支持的翻译引擎'],
+'無料で使えるエンジンから AI 翻訳まで。全エンジンはチャットに自動付与可能。':['ตั้งแต่เอนจินฟรีไปจนถึงการแปลด้วย AI ทุกเอนจินแนบคำแปลในแชทอัตโนมัติได้','From free engines to AI translation. Every engine can auto-attach to chat.','從免費引擎到 AI 翻譯，所有引擎皆可自動附加於聊天。','从免费引擎到 AI 翻译，所有引擎均可自动附加到聊天。'],
+'無料・キー不要':['ฟรี・ไม่ต้องใช้คีย์','Free・No key needed','免費・無需金鑰','免费・无需密钥'],
+'API キー必要':['ต้องใช้ API Key','API key required','需要 API 金鑰','需要 API 密钥'],
+'ゲームルールに違反しない':['ไม่ละเมิดกฎของเกม','Doesn\'t Break Game Rules','不違反遊戲規則','不违反游戏规则'],
+'SEGA の利用規約・チートツール規制の観点から、本アプリは完全にセーフです。':['ในมุมของข้อกำหนดการใช้งานของ SEGA และข้อห้ามเครื่องมือโกง แอปนี้ปลอดภัยโดยสมบูรณ์','From the standpoint of SEGA\'s terms of service and cheat-tool rules, this app is completely safe.','就 SEGA 使用條款與外掛工具規範而言，本應用程式完全安全。','就 SEGA 使用条款与外挂工具规范而言，本应用完全安全。'],
+'ゲームのメモリ・プロセスに一切アクセスしない':['ไม่เข้าถึงหน่วยความจำและโพรเซสของเกมเลย','Never accesses game memory or processes','完全不存取遊戲記憶體與程序','完全不访问游戏内存与进程'],
+'PSO2: NGS が公式に出力するログファイル（テキストファイル）のみを読む':['อ่านเฉพาะไฟล์ล็อก (ไฟล์ข้อความ) ที่ PSO2: NGS ส่งออกอย่างเป็นทางการ','Reads only the log (text) files PSO2: NGS officially outputs','只讀取 PSO2: NGS 官方輸出的記錄檔（文字檔）','只读取 PSO2: NGS 官方输出的日志文件（文本文件）'],
+'ゲームの通信・サーバーに一切干渉しない':['ไม่แทรกแซงการสื่อสารหรือเซิร์ฟเวอร์ของเกมเลย','Never interferes with game traffic or servers','完全不干涉遊戲通訊與伺服器','完全不干涉游戏通信与服务器'],
+'ゲームクライアントを改変しない':['ไม่ดัดแปลงไคลเอนต์เกม','Never modifies the game client','不修改遊戲用戶端','不修改游戏客户端'],
+'自動操作・マクロ機能は持たない':['ไม่มีฟังก์ชันควบคุมอัตโนมัติหรือมาโคร','No automation or macro features','不具備自動操作・巨集功能','不具备自动操作・宏功能'],
+'技術スタック':['เทคโนโลยีที่ใช้','Tech Stack','技術堆疊','技术栈'],
+'Windows デスクトップアプリとして動作。追加の依存関係は不要。':['ทำงานเป็นแอปเดสก์ท็อป Windows ไม่ต้องติดตั้งส่วนประกอบเพิ่มเติม','Runs as a Windows desktop app. No extra dependencies required.','以 Windows 桌面應用程式運作，無需額外相依套件。','以 Windows 桌面应用运行，无需额外依赖。'],
+'本アプリは非公式のファンメイドツールです。SEGA および PSO2: NGS とは一切関係ありません。':['แอปนี้เป็นเครื่องมือที่แฟนเกมสร้างขึ้นอย่างไม่เป็นทางการ ไม่เกี่ยวข้องกับ SEGA หรือ PSO2: NGS แต่อย่างใด','This is an unofficial fan-made tool. It is not affiliated with SEGA or PSO2: NGS in any way.','本應用程式為非官方的粉絲製作工具，與 SEGA 及 PSO2: NGS 無任何關係。','本应用为非官方的粉丝制作工具，与 SEGA 及 PSO2: NGS 无任何关系。'],
+'· 個人開発 — 企画・デザインは私、コードの約80%はAI支援 · Last updated: 2026-07-07':['· พัฒนาโดยบุคคลเดียว — แนวคิดและดีไซน์โดยผู้พัฒนา โค้ดราว 80% ได้รับความช่วยเหลือจาก AI · Last updated: 2026-07-07','· Solo-developed · Last updated: 2026-07-07','· 個人開發 — 企劃與設計出自我手，約 80% 程式碼由 AI 輔助 · Last updated: 2026-07-07','· 个人开发 — 策划与设计出自我手，约 80% 代码由 AI 辅助 · Last updated: 2026-07-07']
+};
+const L=['ja','th','en','tw','cn'], HL={ja:'ja',th:'th',en:'en',tw:'zh-TW',cn:'zh-CN'};
+const norm=s=>s.replace(/\s+/g,'').replace(/&amp;/g,'&');
+const M={}; for(const k in D) M[norm(k)]=D[k];
+const sel='.hero-sub,.btn-dl,.old-badge,header>p,.section-title,.section-desc,.flow-label,.flow-desc,.feat-name,.feat-desc,.eng-desc,.eng-badge,.tl-chip-note,.safe-list li,.footer-disc,.footer-credits:not(.footer-credits-en)';
+const items=[];
+document.querySelectorAll(sel).forEach(el=>{
+  const t=M[norm(el.innerHTML)];
+  if(t){ items.push({el,orig:el.innerHTML,t}); return; }
+  el.childNodes.forEach(n=>{ if(n.nodeType===3){ const t2=M[norm(n.textContent)]; if(t2) items.push({n,orig:n.textContent,t:t2}); }});
+});
+const origTitle=document.title;
+function apply(lang){
+  const i=L.indexOf(lang)-1;
+  items.forEach(o=>{
+    if(o.el) o.el.innerHTML = i<0 ? o.orig : o.t[i];
+    else o.n.textContent = i<0 ? o.orig : ' '+o.t[i];
+  });
+  document.documentElement.lang=HL[lang];
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  try{ localStorage.setItem('nyannapp_lang',lang); }catch(e){}
+}
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>apply(b.dataset.lang)));
+let init='ja';
+try{ const s=localStorage.getItem('nyannapp_lang'); if(L.includes(s)) init=s; else {
+  const n=(navigator.language||'').toLowerCase();
+  init = n.startsWith('th')?'th' : n.startsWith('en')?'en' : (n==='zh-tw'||n==='zh-hk'||n.includes('hant'))?'tw' : n.startsWith('zh')?'cn' : 'ja'; } }catch(e){}
+apply(init);
 })();
 </script>
 </body>
