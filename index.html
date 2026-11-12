@@ -36,8 +36,8 @@
   "description": "PSO2:NGS のチャットログ（ChatLog*.txt）をリアルタイムで読み取り、表示・翻訳（6エンジン対応）・TTS読み上げを行うローカル動作のデスクトップアプリ。ゲームのメモリやプロセスには触れず、公式ログファイルのみを読み取ります。",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Windows",
-  "downloadUrl": "https://github.com/ruunyann/nyannapp/releases/download/v0.70.1/NYANNAPP-Setup-0.70.1.zip",
-  "softwareVersion": "0.70.1",
+  "downloadUrl": "https://github.com/ruunyann/nyannapp/releases/download/v0.58.8/NYANNAPP-Setup-0.58.8.zip",
+  "softwareVersion": "0.58.8",
   "isAccessibleForFree": true,
   "author": { "@type": "Person", "name": "ruunyann", "url": "https://github.com/ruunyann" }
 }
@@ -99,13 +99,7 @@ body::before {
   pointer-events: none; z-index: 0;
 }
 
-/* ── pixel cursor (from home) ── */
-html, body {
-  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAA+klEQVR42mNgwAHk9Zz/y+s5/2cgExDSz8QwQIARm0sZGBgYNm3azMDAwMDg5+dLlsE9M1czMDAwMJSkhzIwMDAwPLy0l3FQ+JgFl4Tyk1sMyD4nBG49/4HC9/z7COLjQRvH6HGrJ8+JovDSw+8kGYweAuhxPXA+xuVTUn1Iqs8HT6qmlk8JgQHzMUGL/fx8SSq9iFU/eEuuq9N6GRgYGBjuQsX5y1qwqv/YVYOingGq/xaz3BDx8V0ZNbw+I1ofWj4e/Kl61OIhbzELei2iJslBk1pp8LZAYK1Dcn2Oy6eDpwWCq10N8zmlYNC1qxnx9X2oYQG6TwfcxwDYYmTZsC/KgQAAAABJRU5ErkJggg==') 4 2, auto;
-}
-a, button, [onclick], .top-btn {
-  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAA+klEQVR42mNgwAHk9Zz/y+s5/2cgExDSz8QwQIARm0sZGBgYNm3azMDAwMDg5+dLlsE9M1czMDAwMJSkhzIwMDAwPLy0l3FQ+JgFl4Tyk1sMyD4nBG49/4HC9/z7COLjQRvH6HGrJ8+JovDSw+8kGYweAuhxPXA+xuVTUn1Iqs8HT6qmlk8JgQHzMUGL/fx8SSq9iFU/eEuuq9N6GRgYGBjuQsX5y1qwqv/YVYOingGq/xaz3BDx8V0ZNbw+I1ofWj4e/Kl61OIhbzELei2iJslBk1pp8LZAYK1Dcn2Oy6eDpwWCq10N8zmlYNC1qxnx9X2oYQG6TwfcxwDYYmTZsC/KgQAAAABJRU5ErkJggg==') 4 2, pointer !important;
-}
+/* ── pixel cursor: now provided by nya-cursors.js (NyaCursor) ── */
 @media (hover: none), (pointer: coarse) {
   html, body, a, button, [onclick], .top-btn { cursor: auto !important; }
 }
@@ -179,6 +173,55 @@ header {
   margin: 22px auto 0;
   filter: drop-shadow(3px 3px 0 rgba(44,68,112,.35));
   animation: fadeUp 0.6s 0.15s ease both;
+}
+
+/* ── Hero logo: slime bounce + blink ── */
+.hero-stage {
+  position: relative;
+  width: clamp(84px, 12vw, 140px);
+  aspect-ratio: 1;
+  margin: 34px auto 0;           /* extra top room for the jump */
+  animation: fadeUp 0.6s 0.15s ease both;
+}
+.hero-slime {
+  display: block; width: 100%; height: 100%; overflow: visible;
+  filter: drop-shadow(3px 3px 0 rgba(44,68,112,.35));
+  transform-origin: 50% 100%;
+  animation: slimeBounce 2.4s infinite;
+  will-change: transform;
+}
+.hero-shadow {
+  position: absolute; left: 50%; bottom: -8px;
+  width: 78%; height: 12%; margin-left: -39%;
+  color: rgba(44,68,112,.22);
+  animation: slimeShadow 2.4s infinite;
+}
+.hero-shadow svg { display: block; width: 100%; height: 100%; }
+@keyframes slimeBounce {
+  0%   { transform: translateY(0) scale(1,1); animation-timing-function: ease-in-out; }
+  16%  { transform: translateY(0) scale(1.03,.96); animation-timing-function: ease-in-out; }
+  32%  { transform: translateY(0) scale(1,1); animation-timing-function: ease-out; }
+  40%  { transform: translateY(0) scale(1.13,.82); animation-timing-function: cubic-bezier(.2,.7,.3,1); }
+  50%  { transform: translateY(-22%) scale(.88,1.16); animation-timing-function: ease-out; }
+  62%  { transform: translateY(-30%) scale(.97,1.03); animation-timing-function: ease-in; }
+  74%  { transform: translateY(-8%) scale(.91,1.12); animation-timing-function: ease-in; }
+  80%  { transform: translateY(0) scale(1.18,.78); animation-timing-function: ease-out; }
+  87%  { transform: translateY(0) scale(.95,1.06); animation-timing-function: ease-in-out; }
+  93%  { transform: translateY(0) scale(1.03,.97); animation-timing-function: ease-in-out; }
+  100% { transform: translateY(0) scale(1,1); }
+}
+@keyframes slimeShadow {
+  0%,32%,100% { transform: scale(1,1); opacity: 1; }
+  40% { transform: scale(1.1,1); }
+  62% { transform: scale(.55,.8); opacity: .45; }
+  80% { transform: scale(1.18,1); opacity: 1; }
+  87% { transform: scale(.96,1); }
+}
+.hero-slime .eye { transform-box: fill-box; transform-origin: 50% 50%; animation: slimeBlink 3.7s infinite; }
+@keyframes slimeBlink {
+  0%,86%,92%,100% { transform: scaleY(1); }
+  88.5% { transform: scaleY(.2); }
+  94.5% { transform: scaleY(.2); }
 }
 
 .hero-sub {
@@ -688,6 +731,7 @@ footer::before {
 }
 @media (prefers-reduced-motion: reduce) {
   .bubble, .hero-badge, .hero-title, .hero-logo, .hero-sub, .mockup-wrap, .hero-cta { animation: none !important; }
+  .hero-stage, .hero-slime, .hero-shadow, .hero-slime .eye { animation: none !important; }
   .feat-card:hover .feat-icon svg, .flow-step:hover .flow-icon svg { animation: none !important; }
 }
 </style>
@@ -702,7 +746,10 @@ footer::before {
     PSO2: NEW GENESIS — LIVE CHAT VIEWER
   </div>
   <h1 class="hero-title">NYANN!!<span>APP!!</span></h1>
-  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0wLjUgLTAuNSAxNiAxNiIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBzaGFwZS1yZW5kZXJpbmc9ImNyaXNwRWRnZXMiPjxwYXRoIGZpbGw9IiMxZjJlNDMiIGQ9Ik0zIDBoMXYxaC0xek0xMSAwaDF2MWgtMXpNMiAxaDF2MWgtMXpNNCAxaDd2MWgtN3pNMTIgMWgxdjFoLTF6TTIgMmgxdjFoLTF6TTEyIDJoMXYxaC0xek0xIDNoMXYxaC0xek0xMyAzaDF2MWgtMXpNMCA0aDF2MWgtMXpNMTQgNGgxdjFoLTF6TTAgNWgxdjFoLTF6TTE0IDVoMXYxaC0xek0wIDZoMXYxaC0xek00IDZoMXYxaC0xek0xMCA2aDF2MWgtMXpNMTQgNmgxdjFoLTF6TTAgN2gxdjFoLTF6TTE0IDdoMXYxaC0xek0wIDhoMXYxaC0xek0xNCA4aDF2MWgtMXpNMCA5aDF2MWgtMXpNMTQgOWgxdjFoLTF6TTAgMTBoMXYxaC0xek0xNCAxMGgxdjFoLTF6TTAgMTFoMXYxaC0xek0xNCAxMWgxdjFoLTF6TTEgMTJoMXYxaC0xek0xMyAxMmgxdjFoLTF6TTIgMTNoMXYxaC0xek0xMiAxM2gxdjFoLTF6TTMgMTRoOXYxaC05eiIvPjxwYXRoIGZpbGw9IiNkMWUwZjYiIGQ9Ik0zIDFoMXYxaC0xek00IDJoNXYxaC01ek0yIDNoMXYxaC0xek01IDNoNnYxaC02ek0xIDRoMXYxaC0xek0zIDRoOXYxaC05ek0xIDVoMTF2MWgtMTF6TTEgNmgzdjFoLTN6TTUgNmg1djFoLTV6TTExIDZoMXYxaC0xek0xIDdoMnYxaC0yek01IDdoMXYxaC0xek05IDdoMXYxaC0xek0xIDhoMTF2MWgtMTF6TTEgOWgxMXYxaC0xMXpNMSAxMGgxMXYxaC0xMXpNMiAxMWg5djFoLTl6TTMgMTJoN3YxaC03eiIvPjxwYXRoIGZpbGw9IiNhYmM3ZWUiIGQ9Ik0xMSAxaDF2MWgtMXpNOSAyaDJ2MWgtMnpNMTEgM2gydjFoLTJ6TTEyIDRoMnYxaC0yek0xMiA1aDJ2MWgtMnpNMTIgNmgydjFoLTJ6TTEyIDdoMnYxaC0yek0xMiA4aDJ2MWgtMnpNMTIgOWgydjFoLTJ6TTEyIDEwaDJ2MWgtMnpNMSAxMWgxdjFoLTF6TTExIDExaDN2MWgtM3pNMiAxMmgxdjFoLTF6TTEwIDEyaDN2MWgtM3pNMyAxM2g5djFoLTl6Ii8+PHBhdGggZmlsbD0iI2Y0YzRkMCIgZD0iTTMgMmgxdjFoLTF6TTExIDJoMXYxaC0xek0zIDdoMnYxaC0yek0xMCA3aDJ2MWgtMnoiLz48cGF0aCBmaWxsPSIjZTA1NjdhIiBkPSJNNiA3aDN2MWgtM3oiLz48cGF0aCBmaWxsPSIjZmZmZmZmIiBkPSJNMyAzaDJ2MWgtMnpNMiA0aDF2MWgtMXoiLz48L3N2Zz4=" alt="NYANN!! APP!! Logo" class="hero-logo">
+  <div class="hero-stage" aria-hidden="false">
+    <div class="hero-shadow" aria-hidden="true"><svg viewBox="0 0 11 2" preserveAspectRatio="none" shape-rendering="crispEdges"><path fill="currentColor" d="M2 0h7v1h-7zM0 1h11v1h-11z"/></svg></div>
+    <svg class="hero-slime" viewBox="-0.5 -0.5 16 16" shape-rendering="crispEdges" role="img" aria-label="NYANN!! APP!! Logo"><path fill="#1f2e43" d="M3 0h1v1h-1zM11 0h1v1h-1zM2 1h1v1h-1zM4 1h7v1h-7zM12 1h1v1h-1zM2 2h1v1h-1zM12 2h1v1h-1zM1 3h1v1h-1zM13 3h1v1h-1zM0 4h1v1h-1zM14 4h1v1h-1zM0 5h1v1h-1zM14 5h1v1h-1zM0 6h1v1h-1zM14 6h1v1h-1zM0 7h1v1h-1zM14 7h1v1h-1zM0 8h1v1h-1zM14 8h1v1h-1zM0 9h1v1h-1zM14 9h1v1h-1zM0 10h1v1h-1zM14 10h1v1h-1zM0 11h1v1h-1zM14 11h1v1h-1zM1 12h1v1h-1zM13 12h1v1h-1zM2 13h1v1h-1zM12 13h1v1h-1zM3 14h9v1h-9z"/><path fill="#d1e0f6" d="M3 1h1v1h-1zM4 2h5v1h-5zM2 3h1v1h-1zM5 3h6v1h-6zM1 4h1v1h-1zM3 4h9v1h-9zM1 5h11v1h-11zM1 6h3v1h-3zM5 6h5v1h-5zM11 6h1v1h-1zM1 7h2v1h-2zM5 7h1v1h-1zM9 7h1v1h-1zM1 8h11v1h-11zM1 9h11v1h-11zM1 10h11v1h-11zM2 11h9v1h-9zM3 12h7v1h-7z"/><path fill="#abc7ee" d="M11 1h1v1h-1zM9 2h2v1h-2zM11 3h2v1h-2zM12 4h2v1h-2zM12 5h2v1h-2zM12 6h2v1h-2zM12 7h2v1h-2zM12 8h2v1h-2zM12 9h2v1h-2zM12 10h2v1h-2zM1 11h1v1h-1zM11 11h3v1h-3zM2 12h1v1h-1zM10 12h3v1h-3zM3 13h9v1h-9z"/><path fill="#f4c4d0" d="M3 2h1v1h-1zM11 2h1v1h-1zM3 7h2v1h-2zM10 7h2v1h-2z"/><path fill="#e0567a" d="M6 7h3v1h-3z"/><path fill="#ffffff" d="M3 3h2v1h-2zM2 4h1v1h-1z"/><path fill="#d1e0f6" d="M4 6h1v1h-1zM10 6h1v1h-1z"/><path class="eye" fill="#1f2e43" d="M4 6h1v1h-1z"/><path class="eye" fill="#1f2e43" d="M10 6h1v1h-1z"/></svg>
+  </div>
   <p class="hero-sub">
     PSO2: NGS のチャットログを<strong>リアルタイム</strong>で読み取り、<br>
     表示・翻訳・TTS 読み上げを行う<strong>ローカル動作</strong>のデスクトップアプリ
@@ -764,11 +811,11 @@ footer::before {
 
   <div class="hero-cta">
     <div class="dl-wrap">
-      <a href="https://github.com/ruunyann/nyannapp/releases/download/v0.70.1/NYANNAPP-Setup-0.70.1.zip" class="btn-dl">
+      <a href="https://github.com/ruunyann/nyannapp/releases/download/v0.58.8/NYANNAPP-Setup-0.58.8.zip" class="btn-dl">
         ⬇ ダウンロード
       </a>
       <span class="beta-badge">BETA</span>
-      <span class="ver-badge">Ver 0.70.1</span>
+      <span class="ver-badge">Ver 0.58.8</span>
     </div>
     <div class="dl-wrap">
       <a href="https://ruunyann.github.io/nyannapp/app_files/NYANNAPP.html" class="btn-demo">
@@ -1165,5 +1212,7 @@ observeWithDelay('.tech-pill');
   });
 })();
 </script>
+<script src="nya-cursors.js"></script>
+<script>NyaCursor.start();</script>
 </body>
 </html>
